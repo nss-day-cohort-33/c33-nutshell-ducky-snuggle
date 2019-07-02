@@ -18,8 +18,8 @@ const API = {
         })
     },
 
-    getFromApi: function (database) {
-        return fetch(`http://localhost:3000/${database}`)
+    getFromApi: function (database, userId) {
+        return fetch(`http://localhost:3000/${database}?user_id=${userId}`)
         .then(data => data.json())
     },
 

@@ -1,4 +1,4 @@
-//this builds the dom for registration form
+//this builds the dom for registration form//
 function registerUserForm (){
 return `
 <h1>Registration</h1>
@@ -13,7 +13,7 @@ return `
 </fieldset>
 `
 }
-
+//Builds intial Login Screen//
 function loginUser () {
 return `
 <h1>Welcome, Snuggle Ducks, to Nutshell</h1>

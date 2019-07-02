@@ -6,20 +6,30 @@ import { registerUserForm } from "./login_register.js";
 let targetContainer = document.querySelector("#container");
 
 const EVENT = {
-  loginUserBtn: function () {
+  loginUserBtn: function() {
     document.querySelector("#login-btn").addEventListener("click", () => {
       let userName = document.querySelector("#login").value;
-      console.log(userName);
+      API.loginFromApi(userName).then(users => {
+          // ****This is the super long way but pretty cool******
+          // for (const value of Object.values(users)) {
+          //   console.log("object", value.user_name);
+          //   if(userName === value.user_name){
+          //     sessionStorage.setItem("id", value.id )
+
+          //   }
+          //   alert("Username does not exist. Please register!")
+          // }
+      });
     });
   },
-  registerPageLink: function () {
+  registerPageLink: function() {
     document.querySelector("#register-link").addEventListener("click", () => {
       event.preventDefault();
       targetContainer.innerHTML = registerUserForm();
       EVENT.submitRegBtn();
     });
   },
-  submitRegBtn: function () {
+  submitRegBtn: function() {
     document.querySelector("#submit-reg-btn").addEventListener("click", () => {
       console.log("you clicked the save");
       let userName = document.querySelector("#userName").value;

@@ -2,35 +2,61 @@
 // let timestamp = date.getTime()
 let newsFunc = {
     // //function to generate new inputs to the dom
-    // newsArtComponent: function () {
-    //     let newsDiv = document.createElement("div")
-    //     let newsLabel = document.createElement("label")
-    //     let newsInput = document.createElement("input")
-    //     let newsSaveBtn = document.createElement("button")
-    //     newsDiv.setAttribute("class", "news-arts")
-    //     newsDiv.setAttribute("id", "news-arts")
+    newsArtComponent: function () {
+        let newsDiv = document.createElement("div")
+        let newsLabelTitle = document.createElement("label")
+        let newsInputTitle = document.createElement("input")
+        let newsLabelSynopsis = document.createElement("label")
+        let newsInputSynopsis = document.createElement("input")
+        let newsLabelUrl = document.createElement("label")
+        let newsInputUrl = document.createElement("input")
+        // let newsSaveBtnTitle = document.createElement("button")
+        // let newsSaveBtnSynopsis = document.createElement("button")
+        // let newsSaveBtnUrl = document.createElement("button")
 
-    //     let newNewsArt = `
-    // <input id="news-title" type="text" placeholder="ex: World Hunger Solved">
-    // <input id="news-synopsis" type="text" placeholder="ex: "
-    // <input <a href=<input id="news-url" type="url"> /a>
-    //     `
-    //     newsDiv.innerHTML = newNewsArt;
-    //     newsSaveBtn.textContent = "save";
-    //     newsDiv.appendChild(newsSaveBtn)
-    //     return newsDiv
+        newsDiv.setAttribute("id", "news-id")
+
+        newsLabelTitle.setAttribute("for", "news-title")
+        newsLabelTitle.textContent = "News Title:"
+        newsInputTitle.setAttribute("id", "news-title")
+        newsInputTitle.setAttribute("type", "text")
+        newsInputTitle.setAttribute("placeholder", "ex: World Hunger Solved")
+
+        newsLabelSynopsis.setAttribute("for", "news-synopsis")
+        newsLabelSynopsis.textContent = "News Synopsis:"
+        newsInputSynopsis.setAttribute("id", "news-synopsis")
+        newsInputSynopsis.setAttribute("type", "text")
+        newsInputSynopsis.setAttribute("placeholder", "ex:")
+
+        newsLabelUrl.setAttribute("for", "news-url")
+        newsLabelUrl.textContent = "News Url:"
+        newsInputUrl.setAttribute("id", "news-url")
+        newsInputUrl.setAttribute("type", "url")
+        newsInputUrl.setAttribute("name", "news-addresss")
+        newsInputUrl.setAttribute("placeholder", "http://")
+
+        newsDiv.appendChild(newsLabelTitle)
+        newsDiv.appendChild(newsInputTitle)
+
+        newsDiv.appendChild(newsLabelSynopsis)
+        newsDiv.appendChild(newsInputSynopsis)
+
+        newsDiv.appendChild(newsLabelUrl)
+        newsDiv.appendChild(newsInputUrl)
+
+        return newsDiv
     // },
-    newInputApi: function() {
-        return `
-        <div>
-        <label for="news-title">News Title</label>
-        <input id="news-title" type="text" placeholder="ex: World Hunger Solved">
-        <label for="news-synopsis">News Synopsis</label>
-        <input id="news-synopsis" type="text" placeholder="ex: ">
-        <label id="news-url">News Url</label>
-        <input id="news-url" type="url" name="news-address" placeholder="http://">
-        </div>
-        `
+    // newInputApi: function() {
+    //     return `
+    //     <div>
+    //     <label for="news-title">News Title</label>
+    //     <input id="news-title" type="text" placeholder="ex: World Hunger Solved">
+    //     <label for="news-synopsis">News Synopsis</label>
+    //     <input id="news-synopsis" type="text" placeholder="ex: ">
+    //     <label id="news-url">News Url</label>
+    //     <input id="news-url" type="url" name="news-address" placeholder="http://">
+    //     </div>
+    //     `
     },
 //     newsArtFromApi: function (id) {
 //         let userID = sessionStorage.getItem("id")

@@ -24,7 +24,8 @@ const EVENT = {
           API.getFromApi("news", userID )
           .then( info => {
               console.log(info)
-              targetContainer.innerHTML = newsFunc.newInputApi()
+              targetContainer.innerHTML = ""
+              targetContainer.appendChild(newsFunc.newsArtComponent())
               info.forEach(element => {
                   targetContainer.innerHTML += newsFunc.newsFromApi(element)
               });

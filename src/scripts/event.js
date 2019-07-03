@@ -2,6 +2,8 @@
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
+import { RENDER } from "./render.js";
+import { userMESSAGE } from "./component.js"
 
 let targetContainer = document.querySelector("#container");
 
@@ -19,8 +21,8 @@ const EVENT = {
           sessionStorage.setItem("user_name", user[0].user_name)
           sessionStorage.setItem("id", user[0].id )
           let userID = sessionStorage.getItem("id")
-          // targetContainer.innerHTML = ""
-          // API.getFromApi("message", userID)
+          targetContainer.innerHTML = ""
+            targetContainer.appendChild(userMESSAGE.messageComponent())
           }
         });
       });

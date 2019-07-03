@@ -37,6 +37,11 @@
       "user_id": 1,
       "message": "this is the best social media app ever",
       "id": 1
+    },
+    {
+      "user_id": 2,
+      "message": "LOL, OK!",
+      "id": 2
     }
   ],
   "task": [

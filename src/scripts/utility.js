@@ -7,7 +7,18 @@ let utilityFunc = {
             email: email,
             password: password
         }
+    },
+    createEventObj: function (userId, eventName, eventDate, eventLocation) {
+        return {
+            user_id: userId,
+            event_name: eventName,
+            event_date: eventDate,
+            event_location: eventLocation
+        }
     }
 }
+
+
+
 
 export {utilityFunc}

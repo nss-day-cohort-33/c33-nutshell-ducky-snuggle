@@ -2,6 +2,7 @@
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
+import { taskComp } from "./component.js";
 
 let targetContainer = document.querySelector("#container");
 
@@ -39,6 +40,15 @@ const EVENT = {
       API.saveToApi("user", userObj);
       // targetContainer.innerHTML = ""; --Will clear container upon submit--
     });
+  },
+  createTaskEditForm: function() {
+    document.querySelector("#taskList-container").addEventListener("click", () =>{
+      if(event.target.id.startsWith("taskComp")){
+        var target = event.target
+        var text = target.innerHTML
+        target.innerHTML = taskComp.addTaskEditForm(text)
+      }
+    })
   }
 };
 

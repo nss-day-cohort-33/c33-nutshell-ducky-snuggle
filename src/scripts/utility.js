@@ -6,7 +6,16 @@ let utilityFunc = {
             user_name: userName,
             email: email
         }
+    },
+    createTaskObject: function (userId, task, date,) {
+        return {
+            user_id: userId,
+            task: task,
+            date_due: date,
+            complete: false,
+        }
     }
 }
+
 
 export {utilityFunc}

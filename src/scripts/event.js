@@ -2,6 +2,8 @@
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
+import {newsFunc} from "./component.js";
+import {RENDER} from  "./render.js"
 
 let targetContainer = document.querySelector("#container");
 
@@ -19,10 +21,18 @@ const EVENT = {
           sessionStorage.setItem("user_name", user[0].user_name)
           sessionStorage.setItem("id", user[0].id )
           let userID = sessionStorage.getItem("id")
+          API.getFromApi("news", userID )
+          .then( info => {
+              console.log(info)
+              targetContainer.innerHTML = newsFunc.newInputApi()
+              info.forEach(element => {
+                  targetContainer.innerHTML += newsFunc.newsFromApi(element)
+              });
           // targetContainer.innerHTML = ""
           // API.getFromApi("message", userID)
+          })
           }
-        });
+        })
       });
     },
     registerPageLink: function() {
@@ -41,11 +51,12 @@ const EVENT = {
         let userObj = utilityFunc.createUserObj(userName, email, password);
         console.log(userObj);
         API.saveToApi("user", userObj);
+
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       });
     }
   };
-  
+
   export { EVENT };
   // ****This is the super long way but pretty cool******
   // for (const value of Object.values(users)) {

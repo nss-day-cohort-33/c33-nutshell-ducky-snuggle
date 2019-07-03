@@ -3,17 +3,26 @@
     {
       "user_name": "dummy",
       "email": "dummy@yahoo.com",
+      "password": "dummy",
       "id": 1
     },
     {
       "user_name": "trial2",
       "email": "trial2@aol.com",
+      "password": "trial2",
       "id": 2
     },
     {
       "user_name": "ohBuddy",
       "email": "sydneycnoh@gmail.com",
+      "password": "ohBuddy",
       "id": 3
+    },
+    {
+      "user_name": "trial4",
+      "email": "trial4@gmail.com",
+      "password": "trial4",
+      "id": 4
     }
   ],
   "friend": [

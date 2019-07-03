@@ -9,37 +9,50 @@ const EVENT = {
   loginUserBtn: function() {
     document.querySelector("#login-btn").addEventListener("click", () => {
       let userName = document.querySelector("#login").value;
-      API.loginFromApi(userName).then(users => {
-          // ****This is the super long way but pretty cool******
-          // for (const value of Object.values(users)) {
-          //   console.log("object", value.user_name);
-          //   if(userName === value.user_name){
-          //     sessionStorage.setItem("id", value.id )
-
-          //   }
-          //   alert("Username does not exist. Please register!")
-          // }
+      let passWord = document.querySelector("#password").value;
+      API.loginFromApi(userName).then(user => {
+        if(user.length === 0) {
+          alert("Username does not exist! Please Register.")
+        }else if (user[0].password !== passWord) {
+          alert("Incorrect Password")
+        } else if (user[0].user_name === userName && user[0].password === passWord) {
+          sessionStorage.setItem("user_name", user[0].user_name)
+          sessionStorage.setItem("id", user[0].id )
+          let userID = sessionStorage.getItem("id")
+          // targetContainer.innerHTML = ""
+          // API.getFromApi("message", userID)
+          }
+        });
       });
-    });
-  },
-  registerPageLink: function() {
-    document.querySelector("#register-link").addEventListener("click", () => {
-      event.preventDefault();
-      targetContainer.innerHTML = registerUserForm();
-      EVENT.submitRegBtn();
-    });
-  },
-  submitRegBtn: function() {
-    document.querySelector("#submit-reg-btn").addEventListener("click", () => {
-      console.log("you clicked the save");
-      let userName = document.querySelector("#userName").value;
-      let email = document.querySelector("#email").value;
-      let userObj = utilityFunc.createUserObj(userName, email);
-      console.log(userObj);
-      API.saveToApi("user", userObj);
-      // targetContainer.innerHTML = ""; --Will clear container upon submit--
-    });
-  }
-};
+    },
+    registerPageLink: function() {
+      document.querySelector("#register-link").addEventListener("click", () => {
+        event.preventDefault();
+        targetContainer.innerHTML = registerUserForm();
+        EVENT.submitRegBtn();
+      });
+    },
+    submitRegBtn: function() {
+      document.querySelector("#submit-reg-btn").addEventListener("click", () => {
+        console.log("you clicked the save");
+        let userName = document.querySelector("#userName").value;
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+        let userObj = utilityFunc.createUserObj(userName, email, password);
+        console.log(userObj);
+        API.saveToApi("user", userObj);
+        // targetContainer.innerHTML = ""; --Will clear container upon submit--
+      });
+    }
+  };
+  
+  export { EVENT };
+  // ****This is the super long way but pretty cool******
+  // for (const value of Object.values(users)) {
+  //   console.log("object", value.user_name);
+  //   if(userName === value.user_name){
+  //     sessionStorage.setItem("id", value.id )
 
-export { EVENT };
+  //   }
+  //   alert("Username does not exist. Please register!")
+  // }

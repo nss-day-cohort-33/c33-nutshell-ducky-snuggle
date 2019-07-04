@@ -56,13 +56,6 @@
     },
     {
       "user_id": 1,
-      "event_name": "Newer event",
-      "event_date": "2019-07-09",
-      "event_location": "there",
-      "id": 7
-    },
-    {
-      "user_id": 1,
       "event_name": "4th of July party",
       "event_date": "2019-07-04",
       "event_location": "Downtown",
@@ -83,18 +76,25 @@
       "id": 19
     },
     {
-      "user_id": 1,
-      "event_name": "Time travel",
-      "event_date": "2019-06-19",
-      "event_location": "the past",
+      "user_id": 2,
+      "event_name": "U2 E1",
+      "event_date": "2019-07-04",
+      "event_location": "here",
       "id": 20
     },
     {
-      "user_id": 1,
-      "event_name": "something",
-      "event_date": "2019-07-26",
-      "event_location": "in the future",
+      "user_id": 2,
+      "event_name": "U2 E2",
+      "event_date": "2019-07-05",
+      "event_location": "here",
       "id": 21
+    },
+    {
+      "user_id": 2,
+      "event_name": "U2 E3",
+      "event_date": "2019-07-05",
+      "event_location": "here",
+      "id": 22
     }
   ],
   "news": [

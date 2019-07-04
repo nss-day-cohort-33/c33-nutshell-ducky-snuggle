@@ -8,8 +8,14 @@ import { createEventForm, loadEventBox } from "./eventComponent.js";
 let targetContainer = document.querySelector("#container");
 
 const EVENT = {
-  loginUserBtn: function() {
-    document.querySelector("#login-btn").addEventListener("click", () => {
+    loginUserClick: function () {document.querySelector("#login-btn").addEventListener("click", () => this.loginUser())},
+    loginUserKeyup: function () {document.querySelector("#password").addEventListener("keyup", (event) => {
+        if (event.keyCode === 13) {
+          this.loginUser()
+        }
+      }
+    )},
+    loginUser: function() {
       let userName = document.querySelector("#login").value;
       let passWord = document.querySelector("#password").value;
       API.loginFromApi(userName).then(user => {
@@ -28,7 +34,7 @@ const EVENT = {
           loadEventBox()
           }
         });
-      });
+      // });
     },
     registerPageLink: function() {
       document.querySelector("#register-link").addEventListener("click", () => {

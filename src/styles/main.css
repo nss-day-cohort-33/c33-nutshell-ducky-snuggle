@@ -4,7 +4,9 @@
     background-color: cornsilk;
 
 }
-
+.hide {
+    display: none;
+}
 .past-event {
     color: lightgray;
 }

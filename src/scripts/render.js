@@ -14,6 +14,7 @@ const RENDER = {
     getAndDisplay: function (eventObj) {
         // targetContainer.innerHTML = ""
         document.querySelector("#event-list-container").innerHTML = ""
+        document.querySelector("#past-event-div").innerHTML = ""
         API.getFromApi("event", eventObj.user_id)
         .then(this.insertComponent)
     }

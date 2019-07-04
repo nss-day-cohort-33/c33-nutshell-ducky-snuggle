@@ -22,24 +22,26 @@ function loadEventBox () {
 
     targetContainer.appendChild(eventContainer)
 
-    eventContainer.appendChild(showBtn)
-    eventContainer.appendChild(addBtn)
+    eventContainer.prepend(showBtn)
+    eventContainer.prepend(addBtn)
 
     addBtn.addEventListener("click", () => {
         // eventFormContainer.innerHTML = ""
         createEventForm()
+        addBtn.setAttribute("class", "hide")
     })
 
     showBtn.addEventListener("click", () =>{
         // eventListContainer.prepend(h1)
         eventListContainer.innerHTML = ""
+        pastEventDiv.innerHTML = ""
         createDynamicHeading()
         API.getFromApi("event", userId).then(RENDER.insertComponent)
     })
 }
 
 // THIS IS TEMPORARY TO BYPASS LOGIN. DONT FORGET TO TAKE THIS OUT
-loadEventBox()
+// loadEventBox()
 
 
 

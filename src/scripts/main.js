@@ -1,4 +1,4 @@
-import { loginUser } from "./login_register.js";
+import { loginUserForm } from "./login_register.js";
 import { EVENT } from "./event.js";
 
 import {API} from "./api/api_manager.js"
@@ -10,10 +10,11 @@ console.log(
 
 
 let targetContainer = document.querySelector("#container");
-// targetContainer.innerHTML = loginUser();
+targetContainer.innerHTML = loginUserForm();
 
-// EVENT.loginUserBtn();
-// EVENT.registerPageLink();
+EVENT.loginUserClick();
+EVENT.loginUserKeyup();
+EVENT.registerPageLink();
 
 let userID = sessionStorage.getItem("id")
 console.log(userID)

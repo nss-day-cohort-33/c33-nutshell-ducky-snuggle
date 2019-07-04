@@ -8,6 +8,7 @@ import { createEventForm, loadEventBox } from "./eventComponent.js";
 let targetContainer = document.querySelector("#container");
 
 const EVENT = {
+  // Refactored login function so event listeners allow click or keypress
     loginUserClick: function () {document.querySelector("#login-btn").addEventListener("click", () => this.loginUser())},
     loginUserKeyup: function () {document.querySelector("#password").addEventListener("keyup", (event) => {
         if (event.keyCode === 13) {
@@ -15,15 +16,16 @@ const EVENT = {
         }
       }
     )},
+    // Added to conditional statements to allow email address for login
     loginUser: function() {
       let userName = document.querySelector("#login").value;
       let passWord = document.querySelector("#password").value;
       API.loginFromApi(userName).then(user => {
-        if(user.length === 0) {
+        if(user.length === 0 || userName === "") {
           alert("Username does not exist! Please Register.")
         }else if (user[0].password !== passWord) {
           alert("Incorrect Password")
-        } else if (user[0].user_name === userName && user[0].password === passWord) {
+        } else if (user[0].password === passWord && (user[0].user_name === userName || user[0].email === userName)) {
           sessionStorage.setItem("user_name", user[0].user_name)
           sessionStorage.setItem("id", user[0].id )
           let userID = sessionStorage.getItem("id")
@@ -34,8 +36,7 @@ const EVENT = {
           loadEventBox()
           }
         });
-      // });
-    },
+      },
     registerPageLink: function() {
       document.querySelector("#register-link").addEventListener("click", () => {
         event.preventDefault();
@@ -53,6 +54,27 @@ const EVENT = {
         console.log(userObj);
         API.saveToApi("user", userObj);
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
+
+        API.loginFromApi(userName).then(user => {
+          if(email === user.email) {
+            alert("Login function and SS")
+          }else if (userName === user.user_name && password === user.password) {
+            alert("You have already registered. Please login.")
+          } else if (userName === user.user_name) {
+            alert("The username you entered is already taken. Please try again.")
+          }else if (user.length === 0) {
+            sessionStorage.setItem("user_name", user[0].user_name)
+            sessionStorage.setItem("id", user[0].id )
+            let userID = sessionStorage.getItem("id")
+            targetContainer.innerHTML = ""
+            console.log("logged in")
+            // API.getFromApi("event", userID).then(RENDER.insertComponent)
+            // createEventForm()
+            loadEventBox()
+            }
+          });
+
+
       });
     }
   };

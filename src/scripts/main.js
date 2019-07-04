@@ -12,8 +12,10 @@ console.log(
 let targetContainer = document.querySelector("#container");
 targetContainer.innerHTML = loginUserForm();
 
+// Calls click/keypress event listeners for login
 EVENT.loginUserClick();
 EVENT.loginUserKeyup();
+
 EVENT.registerPageLink();
 
 let userID = sessionStorage.getItem("id")

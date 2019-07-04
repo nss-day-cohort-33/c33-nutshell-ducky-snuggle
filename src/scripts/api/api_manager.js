@@ -34,7 +34,8 @@ const API = {
         })
     },
     loginFromApi: function (username) {
-        return fetch(`http://localhost:3000/user?user_name=${username}`)
+        // Changed "user_name" to "q" to allow general query for username or email address
+        return fetch(`http://localhost:3000/user?q=${username}`)
         .then(data => data.json())
     },
 }

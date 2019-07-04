@@ -56,13 +56,6 @@
     },
     {
       "user_id": 1,
-      "event_name": "New",
-      "event_date": "",
-      "event_location": "",
-      "id": 6
-    },
-    {
-      "user_id": 1,
       "event_name": "Newer event",
       "event_date": "2019-07-09",
       "event_location": "there",
@@ -70,31 +63,38 @@
     },
     {
       "user_id": 1,
-      "event_name": "Even",
-      "event_date": "2019-07-11",
-      "event_location": "the",
-      "id": 8
+      "event_name": "4th of July party",
+      "event_date": "2019-07-04",
+      "event_location": "Downtown",
+      "id": 13
     },
     {
       "user_id": 1,
-      "event_name": "njn, new",
+      "event_name": "New party",
+      "event_date": "2019-07-04",
+      "event_location": "down the street",
+      "id": 18
+    },
+    {
+      "user_id": 1,
+      "event_name": "Old event",
+      "event_date": "2019-07-03",
+      "event_location": "the past",
+      "id": 19
+    },
+    {
+      "user_id": 1,
+      "event_name": "Time travel",
+      "event_date": "2019-06-19",
+      "event_location": "the past",
+      "id": 20
+    },
+    {
+      "user_id": 1,
+      "event_name": "something",
       "event_date": "2019-07-26",
-      "event_location": "bnmbkm",
-      "id": 9
-    },
-    {
-      "user_id": 1,
-      "event_name": "hello 2.0",
-      "event_date": "2019-08-16",
-      "event_location": "dfchgj",
-      "id": 10
-    },
-    {
-      "user_id": 1,
-      "event_name": "jkljs",
-      "event_date": "",
-      "event_location": "gnsl",
-      "id": 11
+      "event_location": "in the future",
+      "id": 21
     }
   ],
   "news": [

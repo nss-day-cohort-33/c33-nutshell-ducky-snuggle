@@ -1,0 +1,10 @@
+#event-list-container div:first-of-type {
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: cornsilk;
+
+}
+
+.past-event {
+    color: lightgray;
+}

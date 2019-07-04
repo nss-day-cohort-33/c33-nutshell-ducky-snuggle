@@ -2,7 +2,11 @@ import { API } from "./api/api_manager";
 import {RENDER} from "./render.js"
 import {utilityFunc} from "./utility.js"
 
-
+function createDynamicHeading () {
+    const myEventsHeading = document.createElement("h1")
+    myEventsHeading.textContent = "My Events"
+    eventListContainer.prepend(myEventsHeading)
+}
 
 
 const targetContainer = document.querySelector("#container")
@@ -15,9 +19,6 @@ function loadEventBox () {
     showBtn.textContent = "Show my events"
     const addBtn = document.createElement("button")
     addBtn.textContent = "+"
-    const h1 = document.createElement("h1")
-    h1.textContent = "My Upcoming Events"
-
 
     targetContainer.appendChild(eventContainer)
 
@@ -30,7 +31,9 @@ function loadEventBox () {
     })
 
     showBtn.addEventListener("click", () =>{
-        eventListContainer.prepend(h1)
+        // eventListContainer.prepend(h1)
+        eventListContainer.innerHTML = ""
+        createDynamicHeading()
         API.getFromApi("event", userId).then(RENDER.insertComponent)
     })
 }
@@ -75,7 +78,10 @@ function createEventForm () {
         .then( data => data.json())
         .then( dataJS => {
             // API.getFromApi("event", userId).then(RENDER.insertComponent)
+            // loadEventBox()
             RENDER.getAndDisplay(newEvent)
+            createDynamicHeading()
+
             console.log("saved")
         })
     })
@@ -86,22 +92,29 @@ function createEventForm () {
 const eventListContainer = document.createElement("div")
 eventListContainer.setAttribute("id", "event-list-container")
 eventContainer.appendChild(eventListContainer)
-
+const pastEventDiv = document.createElement("div")
+pastEventDiv.setAttribute("id", "past-event-div")
+eventContainer.appendChild(pastEventDiv)
 
 function createEventComponent (eventObj) {
     const eventChildDiv = document.createElement("div")
     eventChildDiv.setAttribute("id", `delete-${eventObj.id}`)
+
     const deleteBtn = document.createElement("button")
     deleteBtn.textContent = "delete"
     const editBtn = document.createElement("button")
     editBtn.textContent = "edit"
-
+// console.log(new Date(eventObj.event_date).getUTCDate())
+// console.log(new Date().getUTCDay())
+// [: new Date() < new Date(eventObj.event_date) ? "next-event":]
     eventChildDiv.innerHTML = `
+        <section class="${new Date() > new Date(eventObj.event_date) ? "past-event" : ""}">
             <h3>${eventObj.event_name}</h3>
             <strong>Date:</strong> ${eventObj.event_date}
             <br>
             <strong>Location:</strong> ${eventObj.event_location}
             <br>
+        </section>
     `
     deleteBtn.addEventListener("click", () =>{
         console.log("delete")
@@ -116,10 +129,15 @@ function createEventComponent (eventObj) {
         let editForm = createEditForm(eventObj)
         editedComponentToDom(eventChildDiv.id, editForm, eventObj)
     })
+    if (new Date() > new Date(eventObj.event_date)) {
+        console.log("past")
+        pastEventDiv.appendChild(eventChildDiv)
+    } else {
+        eventListContainer.appendChild(eventChildDiv)
 
+    }
     eventChildDiv.appendChild(editBtn)
     eventChildDiv.appendChild(deleteBtn)
-    eventListContainer.appendChild(eventChildDiv)
 
 
     return eventContainer
@@ -128,7 +146,7 @@ function createEventComponent (eventObj) {
 function createEditForm (eventObj) {
     return `
         <fieldset>
-        <input type="hidden" id="event-id" value="${eventObj.id}">
+            <input type="hidden" id="event-id" value="${eventObj.id}">
             <label for="event-name-edit">Name of event:</label>
             <input type="text" name="event-name-edit" id="event-name-edit" value="${eventObj.event_name}">
             <br>
@@ -160,6 +178,25 @@ console.log(eventId)
         })
     })
 }
+
+// console.log(API.getFromApi("event", userId).sort(function(a, b) {
+//     return b.date > a.date;
+//   }));
+
+//   function custom_sort(a, b) {
+//     return new Date(b.event_date).getTime() - new Date(a.event_date).getTime();
+// }
+// var your_array = [
+//     {lastUpdated: "2010/01/01"},
+//     {lastUpdated: "2009/01/01"},
+//     {lastUpdated: "2010/07/01"}
+// ];
+
+// function sortEvents (eventObj) {
+//     (API.getFromApi("event", userId).sort(custom_sort))
+// }
+
+// console.log(new Date(eventObj.event_date)+1)
 
 
 export {createEventForm, createEventComponent, loadEventBox}

@@ -3,7 +3,7 @@ import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
 import { RENDER } from "./render.js"
-import { createEventForm } from "./eventComponent.js";
+import { createEventForm, loadEventBox } from "./eventComponent.js";
 
 let targetContainer = document.querySelector("#container");
 
@@ -23,8 +23,9 @@ const EVENT = {
           let userID = sessionStorage.getItem("id")
           targetContainer.innerHTML = ""
           console.log("logged in")
-          API.getFromApi("event", userID).then(RENDER.insertComponent)
+          // API.getFromApi("event", userID).then(RENDER.insertComponent)
           // createEventForm()
+          loadEventBox()
           }
         });
       });

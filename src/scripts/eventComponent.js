@@ -2,12 +2,48 @@ import { API } from "./api/api_manager";
 import {RENDER} from "./render.js"
 import {utilityFunc} from "./utility.js"
 
+
+
+
 const targetContainer = document.querySelector("#container")
 const userId = parseInt(sessionStorage.getItem("id"))
+const eventContainer = document.createElement("div")
+eventContainer.setAttribute("id", "event-container")
+
+function loadEventBox () {
+    const showBtn = document.createElement("button")
+    showBtn.textContent = "Show my events"
+    const addBtn = document.createElement("button")
+    addBtn.textContent = "+"
+    const h1 = document.createElement("h1")
+    h1.textContent = "My Upcoming Events"
+
+
+    targetContainer.appendChild(eventContainer)
+
+    eventContainer.appendChild(showBtn)
+    eventContainer.appendChild(addBtn)
+
+    addBtn.addEventListener("click", () => {
+        // eventFormContainer.innerHTML = ""
+        createEventForm()
+    })
+
+    showBtn.addEventListener("click", () =>{
+        eventListContainer.prepend(h1)
+        API.getFromApi("event", userId).then(RENDER.insertComponent)
+    })
+}
+
+// THIS IS TEMPORARY TO BYPASS LOGIN. DONT FORGET TO TAKE THIS OUT
+loadEventBox()
+
+
 
 function createEventForm () {
     const eventFormContainer = document.createElement("div")
     eventFormContainer.setAttribute("id", "event-form-container")
+    eventContainer.prepend(eventFormContainer)
     const submitBtn = document.createElement("button")
     submitBtn.textContent = "Add new event"
 
@@ -26,7 +62,7 @@ function createEventForm () {
         </fieldset>
         `
 
-   eventFormContainer.appendChild(submitBtn)
+    eventFormContainer.appendChild(submitBtn)
 
     submitBtn.addEventListener("click", event => {
         const eventName = document.querySelector("#event-name").value
@@ -44,11 +80,13 @@ function createEventForm () {
         })
     })
 
-    return eventFormContainer
+    return eventContainer
 }
 
-const eventContainer = document.createElement("div")
-eventContainer.setAttribute("id", "event-container")
+const eventListContainer = document.createElement("div")
+eventListContainer.setAttribute("id", "event-list-container")
+eventContainer.appendChild(eventListContainer)
+
 
 function createEventComponent (eventObj) {
     const eventChildDiv = document.createElement("div")
@@ -81,7 +119,9 @@ function createEventComponent (eventObj) {
 
     eventChildDiv.appendChild(editBtn)
     eventChildDiv.appendChild(deleteBtn)
-    eventContainer.appendChild(eventChildDiv)
+    eventListContainer.appendChild(eventChildDiv)
+
+
     return eventContainer
 }
 
@@ -122,4 +162,4 @@ console.log(eventId)
 }
 
 
-export {createEventForm, createEventComponent}
+export {createEventForm, createEventComponent, loadEventBox}

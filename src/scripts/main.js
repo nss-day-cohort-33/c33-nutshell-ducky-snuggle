@@ -17,7 +17,7 @@ let targetContainer = document.querySelector("#container");
 
 let userID = sessionStorage.getItem("id")
 console.log(userID)
-API.getFromApi("event", userID).then(RENDER.insertForm)
-API.getFromApi("event", userID).then(RENDER.insertComponent)
+// API.getFromApi("event", userID).then(RENDER.insertForm)
+// API.getFromApi("event", userID).then(RENDER.insertComponent)
 
 export {targetContainer}

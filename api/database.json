@@ -77,17 +77,24 @@
     },
     {
       "user_id": 1,
-      "event_name": "njn,",
+      "event_name": "njn, new",
       "event_date": "2019-07-26",
       "event_location": "bnmbkm",
       "id": 9
     },
     {
       "user_id": 1,
-      "event_name": "hello",
+      "event_name": "hello 2.0",
       "event_date": "2019-08-16",
       "event_location": "dfchgj",
       "id": 10
+    },
+    {
+      "user_id": 1,
+      "event_name": "jkljs",
+      "event_date": "",
+      "event_location": "gnsl",
+      "id": 11
     }
   ],
   "news": [

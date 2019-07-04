@@ -13,7 +13,7 @@ const RENDER = {
     },
     getAndDisplay: function (eventObj) {
         // targetContainer.innerHTML = ""
-        document.querySelector("#event-container").innerHTML = ""
+        document.querySelector("#event-list-container").innerHTML = ""
         API.getFromApi("event", eventObj.user_id)
         .then(this.insertComponent)
     }

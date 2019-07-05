@@ -8,5 +8,5 @@ console.log(
 let targetContainer = document.querySelector("#container");
 targetContainer.innerHTML = loginUser();
 
-EVENT.loginUserBtn();
 EVENT.registerPageLink();
+EVENT.loginUserBtn();

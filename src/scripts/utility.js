@@ -7,6 +7,15 @@ let utilityFunc = {
             email: email,
             password: password
         }
+    },
+    createNewsObj: function (newsTitle, newsSynopsis, newsUrl, userId, timeStamp) {
+        return {
+            user_id: parseInt(userId),
+            news_url: newsUrl,
+            news_title: newsTitle,
+            news_synopsis: newsSynopsis,
+            news_time: timeStamp,
+        }
     }
 }
 

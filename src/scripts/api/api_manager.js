@@ -33,7 +33,7 @@ const API = {
         })
     },
     loginFromApi: function (username) {
-        return fetch(`http://localhost:3000/user?user_name=${username}`)
+        return fetch(`http://localhost:3000/users?user_name=${username}`)
         .then(data => data.json())
     },
 }

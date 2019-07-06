@@ -1,5 +1,5 @@
 {
-  "user": [
+  "users": [
     {
       "user_name": "dummy",
       "email": "dummy@yahoo.com",
@@ -25,30 +25,30 @@
       "id": 4
     }
   ],
-  "friend": [
+  "friends": [
     {
       "user": 1,
       "userId": 2,
       "id": 1
     }
   ],
-  "message": [
+  "messages": [
     {
-      "user_id": 1,
+      "userId": 1,
       "message": "this is the best social media app ever",
       "id": 1
     }
   ],
-  "task": [
+  "tasks": [
     {
-      "user_id": 1,
+      "userId": 1,
       "task": "Need to knock out the Nutshell project!!!",
       "id": 1
     }
   ],
-  "event": [
+  "events": [
     {
-      "user_id": 1,
+      "userId": 1,
       "event_name": "Going to get the nails did",
       "event_date": "2019-07-30",
       "event_location": "Nail Salon",
@@ -57,7 +57,7 @@
   ],
   "news": [
     {
-      "user_id": 1,
+      "userId": 1,
       "news_url": "https://www.complex.com/life/2019/07/florida-man-arrested-for-breaking-into-wendys-to-cook-burger-steal-safe",
       "news_title": "Florida Man on this day 7/1",
       "news_synopsis": "Florida Man Arrested for Allegedly Breaking Into Wendy's to Cook Burger and Steal Safe",

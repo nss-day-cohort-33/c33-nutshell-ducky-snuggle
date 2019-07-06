@@ -1,0 +1,42 @@
+/* Messages */
+
+body{
+    font-family: Arial, Helvetica, sans-serif
+}
+
+
+h1 {
+    display: block;
+}
+
+#chat-box {
+    /* border: 1px solid black; */
+    padding: 10px;
+    margin: 5px;
+    width: 375px;
+    background: white;
+    color: black;
+    border-radius: 5px;
+}
+
+#message-component {
+    /* border: 1px solid black; */
+    color: white;
+    padding: 10px;
+    margin: 5px; 
+    width: 425px;
+    background: rgb(63, 143, 189);
+    border-radius: 10px;
+}
+
+#message-input {
+    border: none;
+    border-radius: 2px;
+    height: 25px;
+    width: 300px;
+    margin: 20px;
+}
+
+label {
+    font-weight: bold
+}

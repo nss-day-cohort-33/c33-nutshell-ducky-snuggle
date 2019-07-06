@@ -1,16 +1,17 @@
 import { API } from "./api/api_manager.js";
+import { utilityFunc } from "./utility.js";
+import { EVENT } from "./event.js";
 
 const userMESSAGE = {
-  chatBoxComponent: function() {
-    API.getAllFromApi("message").then(messages => {
-      let chatBox = document.querySelector("#chat-box");
-      messages.forEach(messageitem => {
-        chatBox.innerHTML += `<div><strong>USERNAME: </strong></div><div>${
-          messageitem.message
-        }</div>`;
+    chatBoxComponent: function() {
+        API.getAllFromApi("message").then(messages => {
+            let chatBox = document.querySelector("#chat-box")
+         messages.forEach(messageitem => {
+          console.log(messageitem);
+          chatBox.innerHTML += `<div><strong>USERNAME: </strong></div><div>${messageitem.message}</div>`;
+        });
       });
-    });
-  },
+    },
   messageComponent: function() {
     let messageContainer = document.createElement("div");
     let messageInputLabel = document.createElement("label");
@@ -25,7 +26,6 @@ const userMESSAGE = {
     messageInput.setAttribute("id", "message-input");
     messageInput.setAttribute("type", "text");
     messageInput.setAttribute("placeholder", "Type your message!");
-    // chatBox.innerHTML += userMESSAGE.chatBoxComponent();
     messageContainer.appendChild(chatHeader);
     messageContainer.appendChild(chatBox);
     messageContainer.appendChild(messageInputLabel);
@@ -35,10 +35,15 @@ const userMESSAGE = {
   }
 };
 
-export { userMESSAGE };
+function postMessage () {
+  let messageInput = document.querySelector("#message-input").value;
+  let userID = sessionStorage.getItem("id")
+  let messageObj = utilityFunc.createMessageObj(userID, messageInput)
+  API.saveToApi("message", messageObj)
+  
+}
 
-// let userMessage = `
-//         <div><strong>${userName}: </strong></div>
-//         <div>${messageArray.message}</div>
-//     `;
-//     messageContainer.innerHTML = userMessage;
+
+
+
+export { userMESSAGE, postMessage };

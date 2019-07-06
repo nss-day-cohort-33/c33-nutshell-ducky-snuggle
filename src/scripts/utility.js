@@ -7,6 +7,12 @@ let utilityFunc = {
             email: email,
             password: password
         }
+    },
+    createMessageObj: function (userID, userMessage) {
+        return {
+            user_id: userID,
+            message: userMessage
+        }
     }
 }
 

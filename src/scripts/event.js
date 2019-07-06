@@ -3,7 +3,7 @@ import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
 import { RENDER } from "./render.js";
-import { userMESSAGE } from "./component.js"
+import { userMESSAGE, postMessage } from "./component.js"
 
 let targetContainer = document.querySelector("#container");
 
@@ -22,7 +22,8 @@ const EVENT = {
           sessionStorage.setItem("id", user[0].id )
           let userID = sessionStorage.getItem("id")
           targetContainer.innerHTML = ""
-            targetContainer.appendChild(userMESSAGE.messageComponent())
+          targetContainer.appendChild(userMESSAGE.messageComponent())
+          EVENT.submitMessage()
           }
         });
       });
@@ -45,6 +46,20 @@ const EVENT = {
         API.saveToApi("user", userObj);
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       });
+    },
+    submitMessage: function() {
+          let messageValue = document.querySelector("#message-input");
+          messageValue.addEventListener("keypress", event => {
+            if (event.charCode === 13) {
+              postMessage();
+              API.getAllFromApi("message")
+              .then(data => {
+                targetContainer.innerHTML = "";
+                targetContainer.appendChild(userMESSAGE.messageComponent());
+                EVENT.submitMessage()
+              })
+            }
+          })
     }
   };
   

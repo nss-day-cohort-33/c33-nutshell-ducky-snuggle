@@ -23,6 +23,12 @@
       "email": "trial4@gmail.com",
       "password": "trial4",
       "id": 4
+    },
+    {
+      "user_name": "jfloq",
+      "email": "kopk",
+      "password": "jklm",
+      "id": 5
     }
   ],
   "friend": [

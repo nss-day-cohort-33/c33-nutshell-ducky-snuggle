@@ -18,7 +18,13 @@ const API = {
         })
     },
 
-    getFromApi: function (database, userId) {
+    getFromApi: function (database) {
+        // ADD SORT BY DATE [&_sort=event_date&_order=asc]
+        return fetch(`http://localhost:3000/${database}`)
+        .then(data => data.json())
+    },
+
+    getDatesFromApi: function (database, userId) {
         // ADD SORT BY DATE [&_sort=event_date&_order=asc]
         return fetch(`http://localhost:3000/${database}?user_id=${userId}&_sort=event_date&_order=asc`)
         .then(data => data.json())
@@ -34,7 +40,7 @@ const API = {
         })
     },
     loginFromApi: function (username) {
-        // Changed "user_name" to "q" to allow general query for username or email address
+        // Changed "user_name" to "q" to allow general query for email address
         return fetch(`http://localhost:3000/user?q=${username}`)
         .then(data => data.json())
     },

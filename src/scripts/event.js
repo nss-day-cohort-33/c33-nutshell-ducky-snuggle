@@ -21,9 +21,9 @@ const EVENT = {
       let userName = document.querySelector("#login").value;
       let passWord = document.querySelector("#password").value;
       API.loginFromApi(userName).then(user => {
-        if(user.length === 0 || userName === "") {
+        if (user.length === 0 || userName === "") {
           alert("Username does not exist! Please Register.")
-        }else if (user[0].password !== passWord) {
+        } else if (user[0].password !== passWord) {
           alert("Incorrect Password")
         } else if (user[0].password === passWord && (user[0].user_name === userName || user[0].email === userName)) {
           sessionStorage.setItem("user_name", user[0].user_name)
@@ -51,33 +51,44 @@ const EVENT = {
         let email = document.querySelector("#email").value;
         let password = document.querySelector("#password").value;
         let userObj = utilityFunc.createUserObj(userName, email, password);
-        console.log(userObj);
-        API.saveToApi("user", userObj);
-        // targetContainer.innerHTML = ""; --Will clear container upon submit--
 
         API.loginFromApi(userName).then(user => {
-          if(email === user.email) {
-            alert("Login function and SS")
-          }else if (userName === user.user_name && password === user.password) {
-            alert("You have already registered. Please login.")
-          } else if (userName === user.user_name) {
-            alert("The username you entered is already taken. Please try again.")
-          }else if (user.length === 0) {
-            sessionStorage.setItem("user_name", user[0].user_name)
-            sessionStorage.setItem("id", user[0].id )
-            let userID = sessionStorage.getItem("id")
-            targetContainer.innerHTML = ""
-            console.log("logged in")
-            // API.getFromApi("event", userID).then(RENDER.insertComponent)
-            // createEventForm()
-            loadEventBox()
-            }
-          });
-
-
+          if (user.length === 0){
+            API.loginFromApi(email).then(email => {
+              if (email.length === 0) {
+                console.log(userObj);
+                API.saveToApi("user", userObj);
+                  sessionStorage.setItem("user_name", userName)
+                  sessionStorage.setItem("id", makeRegId())
+                  let userID = sessionStorage.makeItem("id")
+                  targetContainer.innerHTML = ""
+                  console.log("logged in")
+              // loadEventBox()
+              } else if (email === user[0].email) {
+                  alert(`There's an existing account registered under ${email}. Please try again.`)
+              }
+            })
+          } else if (!userName || !email || !password) {
+              alert("Please complete all fields.")
+          } else if(userName === user[0].user_name && email === user[0].email) {
+              alert("You are already registered. Please login.")
+          } else if (user[0].email === email) {
+              alert(`There's an existing account registered under ${email}. Please try again.`)
+          } else if (userName === user[0].user_name) {
+              alert(`${userName} is already taken. Please try again.`)
+          }
+        });
       });
     }
   };
+
+  // NEED TO FIND BETTER PLACE FOR THIS
+  function makeRegId () {
+    API.getFromApi("user").then(user => {
+      return user.length + 1
+    })
+  }
+
 
   export { EVENT };
   // ****This is the super long way but pretty cool******

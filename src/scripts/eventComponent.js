@@ -36,7 +36,7 @@ function loadEventBox () {
         eventListContainer.innerHTML = ""
         pastEventDiv.innerHTML = ""
         createDynamicHeading()
-        API.getFromApi("event", userId).then(RENDER.insertComponent)
+        API.getDatesFromApi("event", userId).then(RENDER.insertComponent)
     })
 }
 

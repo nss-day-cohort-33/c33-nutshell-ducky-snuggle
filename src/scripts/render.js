@@ -15,7 +15,7 @@ const RENDER = {
         // targetContainer.innerHTML = ""
         document.querySelector("#event-list-container").innerHTML = ""
         document.querySelector("#past-event-div").innerHTML = ""
-        API.getFromApi("event", eventObj.user_id)
+        API.getDatesFromApi("event", eventObj.user_id)
         .then(this.insertComponent)
     }
 };

@@ -52,7 +52,7 @@ const EVENT = {
           messageValue.addEventListener("keypress", event => {
             if (event.charCode === 13) {
               postMessage();
-              API.getAllFromApi("message")
+              API.getAllFromApi("messages")
               .then(data => {
                 targetContainer.innerHTML = "";
                 targetContainer.appendChild(userMESSAGE.messageComponent());

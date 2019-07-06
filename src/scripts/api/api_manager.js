@@ -17,11 +17,14 @@ const API = {
             }
         })
     },
-    getAllFromApi: function (database) {
-        return fetch(`http://localhost:3000/${database}`)
-        .then(data => data.json())
-    },
-
+    getAllFromApi: function (database, queryParams) {
+        let url = `http://localhost:3000/${database}`
+        if (queryParams) {
+          url += `?${queryParams}`
+        }
+        return fetch(url)
+        .then( data => data.json() )
+      },
     getFromApi: function (database, userId) {
         return fetch(`http://localhost:3000/${database}?user_id=${userId}`)
         .then(data => data.json())

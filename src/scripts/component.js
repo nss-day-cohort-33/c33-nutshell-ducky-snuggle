@@ -3,15 +3,28 @@ import { utilityFunc } from "./utility.js";
 import { EVENT } from "./event.js";
 
 const userMESSAGE = {
-    chatBoxComponent: function() {
-        API.getAllFromApi("message").then(messages => {
-            let chatBox = document.querySelector("#chat-box")
-         messages.forEach(messageitem => {
-          console.log(messageitem);
-          chatBox.innerHTML += `<div><strong>USERNAME: </strong></div><div>${messageitem.message}</div>`;
-        });
+  chatBoxComponent: function() {
+    API.getAllFromApi("messages", "_expand=user").then(messages => {
+      let chatBox = document.querySelector("#chat-box");
+      messages.forEach(messageitem => {
+        let userName =  sessionStorage.getItem("user_name")
+        let chatMessage = document.createElement("div");
+        let deleteMessageBtn = document.createElement("button");
+        chatMessage.setAttribute("id", "chat-message");
+        deleteMessageBtn.setAttribute("id", `${messageitem.id}`);
+        deleteMessageBtn.textContent = "X";
+        chatMessage.innerHTML += `<p><strong>${messageitem.user.user_name}:</strong> ${messageitem.message}</p>`;
+        if (userName === messageitem.user.user_name) {
+          chatMessage.appendChild(deleteMessageBtn);
+          deleteMessageBtn.addEventListener("click", () => {
+            let id = event.target.id;
+            API.deleteFromApi("messages", id)
+          })
+        }
+        chatBox.appendChild(chatMessage);
       });
-    },
+    });
+  },
   messageComponent: function() {
     let messageContainer = document.createElement("div");
     let messageInputLabel = document.createElement("label");
@@ -35,15 +48,11 @@ const userMESSAGE = {
   }
 };
 
-function postMessage () {
+function postMessage() {
   let messageInput = document.querySelector("#message-input").value;
-  let userID = sessionStorage.getItem("id")
-  let messageObj = utilityFunc.createMessageObj(userID, messageInput)
-  API.saveToApi("message", messageObj)
-  
+  let userID = sessionStorage.getItem("id");
+  let messageObj = utilityFunc.createMessageObj(userID, messageInput);
+  API.saveToApi("messages", messageObj);
 }
-
-
-
 
 export { userMESSAGE, postMessage };

@@ -10,7 +10,7 @@ let utilityFunc = {
     },
     createMessageObj: function (userID, userMessage) {
         return {
-            user_id: userID,
+            userId: userID,
             message: userMessage
         }
     }

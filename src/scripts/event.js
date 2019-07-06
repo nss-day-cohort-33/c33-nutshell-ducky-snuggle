@@ -43,7 +43,7 @@ const EVENT = {
         let password = document.querySelector("#password").value;
         let userObj = utilityFunc.createUserObj(userName, email, password);
         console.log(userObj);
-        API.saveToApi("user", userObj);
+        API.saveToApi("users", userObj);
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       });
     },

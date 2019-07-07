@@ -47,12 +47,7 @@ const EVENT = {
             // targetContainer.innerHTML = ""; --Will clear container upon submit--
         });
     },
-    deleteNewsBtn: function () {
-        document.querySelector(".delete").addEventListener("click", () => {
-            console.log("click works")
-        })
-
-    }
+    
 
 };
 

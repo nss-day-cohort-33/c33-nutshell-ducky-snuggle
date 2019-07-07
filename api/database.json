@@ -58,22 +58,6 @@
   "news": [
     {
       "user_id": 1,
-      "news_url": "https://www.complex.com/life/2019/07/florida-man-arrested-for-breaking-into-wendys-to-cook-burger-steal-safe",
-      "news_title": "Florida Man on this day 7/1",
-      "news_synopsis": "Florida Man Arrested for Allegedly Breaking Into Wendy's to Cook Burger and Steal Safe",
-      "news_time": "time stamp here",
-      "id": 1
-    },
-    {
-      "user_id": 2,
-      "news_url": "https://www.businessinsider.com/dana-white-told-tom-cruise-would-fight-justin-bieber-2019-6",
-      "news_title": "Dana White informed that Tom Cruise would fight Justin Beiber",
-      "news_synopsis": "Just Beiber and Tom Cruise fight might actually happen based on reports from Dana White ",
-      "news_time": "time stamp here",
-      "id": 1
-    },
-    {
-      "user_id": 1,
       "news_url": "https://www.miamiherald.com/news/weird/article232288957.html",
       "news_title": "Mower Kills Man",
       "news_synopsis": "Mower Kills Man, sleeping on the side of an Oregon Highway",

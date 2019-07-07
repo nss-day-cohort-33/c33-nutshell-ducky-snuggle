@@ -31,6 +31,29 @@ function saveNewsBtn() {
         // newsFunc.newsFromApi()
     })
 }
+let userId = sessionStorage.getItem("id")
+
+function deleteNewsBtn(userId) {
+    let allNewsDeleteButtons = document.querySelectorAll(".delete")
+    allNewsDeleteButtons.forEach(deleteBtn => {
+        deleteBtn.addEventListener("click", () => {
+            console.log("delete button", `it works ${userId}`)
+            let deleteBtnId = event.target.id.split("-")[3]
+            console.log("deleteBtnId", deleteBtnId)
+            API.deleteFromApi("news", deleteBtnId)
+                .then(data => {
+                    targetContainer.innerHTML = ""
+                    API.getFromApi("news", userId)
+                        .then(info => {
+                            targetContainer.appendChild(newsFunc.newsArtComponent())
+                            newToDomComp(info)
+                        })
+                })
+        })
+
+    })
+
+}
 
 function newToDomComp(info) {
     info.forEach(element => {
@@ -134,6 +157,7 @@ let newsFunc = {
                 targetContainer.appendChild(newsFunc.newsArtComponent())
                 newToDomComp(info)
                 saveNewsBtn()
+                deleteNewsBtn(userId)
             })
     },
 

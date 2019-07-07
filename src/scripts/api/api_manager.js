@@ -30,8 +30,8 @@ const API = {
         .then(data => data.json())
     },
 
-    updateApi: function (database, info) {
-        return fetch(`http://localhost:3000/${database}`, {
+    updateApi: function (database, info, id) {
+        return fetch(`http://localhost:3000/${database}/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

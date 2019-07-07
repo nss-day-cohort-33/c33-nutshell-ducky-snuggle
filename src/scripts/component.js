@@ -18,7 +18,12 @@ const userMESSAGE = {
           chatMessage.appendChild(deleteMessageBtn);
           deleteMessageBtn.addEventListener("click", () => {
             let id = event.target.id;
-            API.deleteFromApi("messages", id)
+            chatBox.innerHTML = ""
+            API.deleteFromApi("messages", id).then(x => {
+              chatBox.innerHTML = ""
+              userMESSAGE.chatBoxComponent()
+              // -- WHY DOES THIS WORK?!?!?!?! --//
+            })
           })
         }
         chatBox.appendChild(chatMessage);

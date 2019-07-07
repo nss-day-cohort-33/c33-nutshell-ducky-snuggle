@@ -34,8 +34,8 @@ function saveNewsBtn() {
 let userId = sessionStorage.getItem("id")
 
 function deleteNewsBtn(userId) {
-    let allNewsDeleteButtons = document.querySelectorAll(".delete")
-    allNewsDeleteButtons.forEach(deleteBtn => {
+    let allNewsDeleteButns = document.querySelectorAll(".delete")
+    allNewsDeleteButns.forEach(deleteBtn => {
         deleteBtn.addEventListener("click", () => {
             console.log("delete button", `it works ${userId}`)
             let deleteBtnId = event.target.id.split("-")[3]
@@ -52,7 +52,15 @@ function deleteNewsBtn(userId) {
         })
 
     })
+}
 
+function editNewsBtn (id) {
+    let allEditNewsBtn = document.querySelector(`#${id}`)
+    allEditNewsBtn.forEach(editBtn => {
+        editBtn.addEventListener("click", () => {
+            console.log("edit button", "it works")
+        })
+    })
 }
 
 function newToDomComp(info) {
@@ -64,7 +72,7 @@ function newToDomComp(info) {
     <h4>News Synopsis: ${element.news_synopsis}
     <h4><a href=<${element.news_url} target="_blank">Article</a></h4>
     </div>
-    <button class="edit" id="edit-news-button-${element.id}">Edit</button>
+    <button class="edit" id="${element.id}">Edit</button>
     <button class="delete" id="delete-news-button-${element.id}">Delete</button>
     <hr>
     `
@@ -152,12 +160,13 @@ let newsFunc = {
     newsFromApi: function (userID) {
         API.getFromApi("news", userID)
             .then(info => {
-                console.log(info)
+                console.log("this is info", info[0].id)
                 targetContainer.innerHTML = ""
                 targetContainer.appendChild(newsFunc.newsArtComponent())
                 newToDomComp(info)
                 saveNewsBtn()
                 deleteNewsBtn(userId)
+                editNewsBtn(info[0].id)
             })
     },
 

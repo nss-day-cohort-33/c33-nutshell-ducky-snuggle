@@ -79,6 +79,14 @@
       "news_synopsis": "Would-be bike thief caught within seconds: police",
       "news_time": 1562350681007,
       "id": 4
+    },
+    {
+      "user_id": 1,
+      "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
+      "news_title": "This heat is poetic",
+      "news_synopsis": "Florida man goes on hilarious rant about summer heat",
+      "news_time": 1562467040268,
+      "id": 5
     }
   ]
 }

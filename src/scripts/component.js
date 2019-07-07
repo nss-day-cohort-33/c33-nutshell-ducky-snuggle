@@ -11,27 +11,34 @@ const userMESSAGE = {
         let chatMessage = document.createElement("div");
         let deleteMessageBtn = document.createElement("button");
         let editMessageBtn = document.createElement("button")
-        chatMessage.setAttribute("id", "chat-message");
+        let formatMessgaeBtn = document.createElement("button")
+        chatMessage.setAttribute("id", `chat-message-${messageitem.id}`);
         deleteMessageBtn.setAttribute("id", `${messageitem.id}`);
         editMessageBtn.setAttribute("id", `${messageitem.id}`)
+        formatMessgaeBtn.setAttribute("id", `${messageitem.id}`)
         deleteMessageBtn.textContent = "X";
         editMessageBtn.textContent = "Edit"
+        formatMessgaeBtn.textContent= "..."
         chatMessage.innerHTML += `<p><strong>${messageitem.user.user_name}:</strong> ${messageitem.message}</p>`;
         if (userName === messageitem.user.user_name) {
-          chatMessage.appendChild(deleteMessageBtn);
-          chatMessage.appendChild(editMessageBtn);
-          deleteMessageBtn.addEventListener("click", () => {
-            let id = event.target.id;
-            chatBox.innerHTML = ""
-            API.deleteFromApi("messages", id).then(x => {
+          // chatMessage.appendChild(formatMessgaeBtn)
+          chatMessage.addEventListener("click", () => {
+            chatMessage.appendChild(deleteMessageBtn);
+            chatMessage.appendChild(editMessageBtn);
+            deleteMessageBtn.addEventListener("click", () => {
+              let id = event.target.id;
               chatBox.innerHTML = ""
-              userMESSAGE.chatBoxComponent()
-              // -- WHY DOES THIS WORK?!?!?!?! --//
+              API.deleteFromApi("messages", id).then(x => {
+                chatBox.innerHTML = ""
+                userMESSAGE.chatBoxComponent()
+                // -- WHY DOES THIS WORK?!?!?!?! --//
+              })
             })
-          })
-          editMessageBtn.addEventListener("click", () => {
-            chatMessage.appendChild(userMESSAGE.editMessageComponent(messageitem))
-
+            editMessageBtn.addEventListener("click", () => {
+              chatMessage.appendChild(userMESSAGE.editMessageComponent(messageitem))
+              editMessageBtn.setAttribute("disabled", "true")
+  
+            })
           })
         }
         chatBox.appendChild(chatMessage);

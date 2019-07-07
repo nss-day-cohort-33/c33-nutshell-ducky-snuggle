@@ -39,9 +39,9 @@ const API = {
             body: JSON.stringify(info)
         })
     },
-    loginFromApi: function (username) {
+    searchUsersApi: function (username) {
         // Changed "user_name" to "q" to allow general query for email address
-        return fetch(`http://localhost:3000/user?q=${username}`)
+        return fetch(`http://localhost:3000/users?q=${username}`)
         .then(data => data.json())
     },
 }

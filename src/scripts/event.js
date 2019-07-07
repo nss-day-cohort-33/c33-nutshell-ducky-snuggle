@@ -3,7 +3,7 @@ import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
 import { RENDER } from "./render.js"
-import { createEventForm, loadEventBox } from "./eventComponent.js";
+import { eventComponent } from "./eventComponent.js";
 
 let targetContainer = document.querySelector("#container");
 
@@ -20,7 +20,7 @@ const EVENT = {
     loginUser: function() {
       let userName = document.querySelector("#login").value;
       let passWord = document.querySelector("#password").value;
-      API.loginFromApi(userName).then(user => {
+      API.searchUsersApi(userName).then(user => {
         if (user.length === 0 || userName === "") {
           alert("Username does not exist! Please Register.")
         } else if (user[0].password !== passWord) {
@@ -33,7 +33,7 @@ const EVENT = {
           console.log("logged in")
           // API.getFromApi("event", userID).then(RENDER.insertComponent)
           // createEventForm()
-          loadEventBox()
+          eventComponent.loadEventBox()
           }
         });
       },
@@ -41,20 +41,28 @@ const EVENT = {
       document.querySelector("#register-link").addEventListener("click", () => {
         event.preventDefault();
         targetContainer.innerHTML = registerUserForm();
-        EVENT.submitRegBtn();
+        EVENT.submitRegClick();
+        EVENT.submitRegKeyup();
       });
     },
-    submitRegBtn: function() {
-      document.querySelector("#submit-reg-btn").addEventListener("click", () => {
+    submitRegClick: function () {document.querySelector("#submit-reg-btn").addEventListener("click", () => this.submitReg())},
+    submitRegKeyup: function () {document.querySelector("#password").addEventListener("keyup", (event) => {
+        if (event.keyCode === 13) {
+          this.submitReg()
+        }
+      }
+    )},
+    submitReg: function() {
+      // document.querySelector("#submit-reg-btn").addEventListener("click", () => {
         console.log("you clicked the save");
         let userName = document.querySelector("#userName").value;
         let email = document.querySelector("#email").value;
         let password = document.querySelector("#password").value;
         let userObj = utilityFunc.createUserObj(userName, email, password);
 
-        API.loginFromApi(userName).then(user => {
+        API.searchUsersApi(userName).then(user => {
           if (user.length === 0){
-            API.loginFromApi(email).then(email => {
+            API.searchUsersApi(email).then(email => {
               if (email.length === 0) {
                 console.log(userObj);
                 API.saveToApi("user", userObj);
@@ -78,7 +86,7 @@ const EVENT = {
               alert(`${userName} is already taken. Please try again.`)
           }
         });
-      });
+      // });
     }
   };
 

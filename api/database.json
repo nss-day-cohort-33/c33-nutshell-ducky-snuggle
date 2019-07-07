@@ -1,5 +1,5 @@
 {
-  "user": [
+  "users": [
     {
       "user_name": "dummy",
       "email": "dummy@yahoo.com",
@@ -23,36 +23,35 @@
       "email": "trial4@gmail.com",
       "password": "trial4",
       "id": 4
-    },
-    {
-      "user_name": "jfloq",
-      "email": "kopk",
-      "password": "jklm",
-      "id": 5
     }
   ],
-  "friend": [
+  "friends": [
     {
       "user": 1,
       "userId": 2,
       "id": 1
+    },
+    {
+      "user": 1,
+      "userId": 3,
+      "id": 2
     }
   ],
-  "message": [
+  "messages": [
     {
       "user_id": 1,
       "message": "this is the best social media app ever",
       "id": 1
     }
   ],
-  "task": [
+  "tasks": [
     {
       "user_id": 1,
       "task": "Need to knock out the Nutshell project!!!",
       "id": 1
     }
   ],
-  "event": [
+  "events": [
     {
       "user_id": 1,
       "event_name": "Going to get the nails did",
@@ -69,16 +68,9 @@
     },
     {
       "user_id": 1,
-      "event_name": "New party",
-      "event_date": "2019-07-04",
-      "event_location": "down the street",
-      "id": 18
-    },
-    {
-      "user_id": 1,
-      "event_name": "Old event",
-      "event_date": "2019-07-03",
-      "event_location": "the past",
+      "event_name": "New event",
+      "event_date": "2019-07-08",
+      "event_location": "the future",
       "id": 19
     },
     {
@@ -101,6 +93,13 @@
       "event_date": "2019-07-05",
       "event_location": "here",
       "id": 22
+    },
+    {
+      "user_id": 1,
+      "event_name": "brunch",
+      "event_date": "2019-07-14",
+      "event_location": "somewhere",
+      "id": 24
     }
   ],
   "news": [

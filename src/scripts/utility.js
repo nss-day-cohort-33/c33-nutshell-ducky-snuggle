@@ -15,6 +15,12 @@ let utilityFunc = {
             event_date: eventDate,
             event_location: eventLocation
         }
+    },
+    createFriendObj: function (userId, friendId) {
+        return {
+            user: userId,
+            userId: friendId
+        }
     }
 }
 

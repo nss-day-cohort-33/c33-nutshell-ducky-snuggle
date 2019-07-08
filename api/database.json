@@ -23,6 +23,12 @@
       "email": "trial4@gmail.com",
       "password": "trial4",
       "id": 4
+    },
+    {
+      "user_name": "dad",
+      "email": "dad",
+      "password": "dad",
+      "id": 5
     }
   ],
   "friends": [
@@ -30,6 +36,46 @@
       "user": 1,
       "userId": 2,
       "id": 1
+    },
+    {
+      "user": 1,
+      "userId": 4,
+      "id": 3
+    },
+    {
+      "user": 1,
+      "userId": 3,
+      "id": 4
+    },
+    {
+      "user": 2,
+      "userId": 4,
+      "id": 3
+    },
+    {
+      "user": 2,
+      "userId": 3,
+      "id": 4
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 5
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 8
     }
   ],
   "messages": [
@@ -49,14 +95,24 @@
       "id": 3
     },
     {
-      "userId": "1",
-      "message": "HELLO!!!",
-      "id": 4
-    },
-    {
       "userId": "3",
       "message": "Hi There",
       "id": 5
+    },
+    {
+      "userId": "1",
+      "message": "Test",
+      "id": 6
+    },
+    {
+      "userId": "1",
+      "message": "Test",
+      "id": 7
+    },
+    {
+      "userId": "1",
+      "message": "POST",
+      "id": 8
     }
   ],
   "tasks": [
@@ -73,6 +129,55 @@
       "event_date": "2019-07-30",
       "event_location": "Nail Salon",
       "id": 1
+    },
+    {
+      "userId": 1,
+      "event_name": "4th of July party",
+      "event_date": "2019-07-04",
+      "event_location": "Downtown",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "event_name": "New event",
+      "event_date": "2019-07-08",
+      "event_location": "the future",
+      "id": 19
+    },
+    {
+      "userId": 2,
+      "event_name": "U2 E1",
+      "event_date": "2019-07-04",
+      "event_location": "here",
+      "id": 20
+    },
+    {
+      "userId": 2,
+      "event_name": "U2 E2",
+      "event_date": "2019-07-05",
+      "event_location": "here",
+      "id": 21
+    },
+    {
+      "userId": 2,
+      "event_name": "U2 E3",
+      "event_date": "2019-07-05",
+      "event_location": "here",
+      "id": 22
+    },
+    {
+      "userId": 3,
+      "event_name": "brunch",
+      "event_date": "2019-07-14",
+      "event_location": "somewhere",
+      "id": 24
+    },
+    {
+      "userId": 1,
+      "event_name": "new event",
+      "event_date": "2019-07-11",
+      "event_location": "here",
+      "id": 25
     }
   ],
   "news": [

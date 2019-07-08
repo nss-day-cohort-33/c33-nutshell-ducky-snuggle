@@ -76,3 +76,19 @@ h1 {
 label {
     font-weight: bold
 }
+#event-list-container div:first-of-type {
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: cornsilk;
+
+
+    /*Other*/
+
+}
+.hide {
+    display: none;
+}
+.past-event {
+    color: lightgray;
+}
+

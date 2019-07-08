@@ -78,11 +78,4 @@ const userMESSAGE = {
   }
 };
 
-// function postMessage() {
-//   let messageInput = document.querySelector("#message-input").value;
-//   let userID = sessionStorage.getItem("id");
-//   let messageObj = utilityFunc.createMessageObj(userID, messageInput);
-//   API.saveToApi("messages", messageObj);
-// }
-
 export { userMESSAGE };

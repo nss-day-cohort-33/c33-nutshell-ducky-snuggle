@@ -26,12 +26,21 @@ const API = {
         .then( data => data.json() )
       },
     getFromApi: function (database, userId) {
-        return fetch(`http://localhost:3000/${database}?user_id=${userId}`)
+        let url = `http://localhost:3000/${database}`
+        if (userId) {
+          url += `?id_ne=${userId}`
+        }
+        return fetch (url)
+        .then( data => data.json() )
+    },
+    getDatesFromApi: function (database, userId) {
+        // ADD SORT BY DATE [&_sort=event_date&_order=asc]
+        return fetch(`http://localhost:3000/${database}?userId=${userId}&_sort=event_date&_order=asc`)
         .then(data => data.json())
     },
 
-    updateApi: function (database, info, id) {
-        return fetch(`http://localhost:3000/${database}/${id}`, {
+    updateApi: function (database, info) {
+        return fetch(`http://localhost:3000/${database}/${info.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -43,6 +52,15 @@ const API = {
         return fetch(`http://localhost:3000/users?user_name=${username}`)
         .then(data => data.json())
     },
-}
+
+    searchUsersApi: function (username, userId) {
+        let url = `http://localhost:3000/users?q=${username}`
+        if (userId) {
+          url += `&id_ne=${userId}`
+        }
+        return fetch(url)
+        .then( data => data.json() )
+    }
+};
 
 export {API}

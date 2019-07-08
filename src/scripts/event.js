@@ -1,9 +1,8 @@
-//event listener for the registration submit button//
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
-import { RENDER } from "./render.js";
-import { userMESSAGE, postMessage } from "./component.js"
+import { userMESSAGE } from "./component.js"
+import { postMessage } from "./api/objet_manager.js"
 
 let targetContainer = document.querySelector("#container");
 
@@ -24,17 +23,19 @@ const EVENT = {
           targetContainer.innerHTML = ""
           targetContainer.appendChild(userMESSAGE.messageComponent())
           EVENT.submitMessage()
-          }
-        });
+          //--The Event Listener for Messages should not have to be in this EVENT --//
+        }
       });
-    },
-    registerPageLink: function() {
-      document.querySelector("#register-link").addEventListener("click", () => {
-        event.preventDefault();
-        targetContainer.innerHTML = registerUserForm();
-        EVENT.submitRegBtn();
-      });
-    },
+    });
+  },
+  registerPageLink: function() {
+    document.querySelector("#register-link").addEventListener("click", () => {
+      event.preventDefault();
+      targetContainer.innerHTML = registerUserForm();
+      EVENT.submitRegBtn();
+    });
+  },
+  //event listener for the registration submit button//
     submitRegBtn: function() {
       document.querySelector("#submit-reg-btn").addEventListener("click", () => {
         console.log("you clicked the save");
@@ -60,10 +61,55 @@ const EVENT = {
               })
             }
           })
+    },
+    addRemoveFormatBtns: function (formatButton, deleteButton, editButton) {
+      formatButton.addEventListener("click", () => {
+        if (deleteButton.style.display === "none") {
+          deleteButton.style.display = "block";
+        } else {
+          deleteButton.style.display = "none";
+        }
+        if (editButton.style.display === "none") {
+          editButton.style.display = "block";
+        } else {
+          editButton.style.display = "none";
+        }
+      })
+    },
+    deleteMessage: function (deleteBtn, chatBox) {
+      deleteBtn.addEventListener("click", () => {
+        let id = event.target.id;
+        chatBox.innerHTML = ""
+        API.deleteFromApi("messages", id).then(()=> {
+          chatBox.innerHTML = ""
+          userMESSAGE.chatBoxComponent()
+        })
+      })
+    },
+    editMessage: function (editButton, chatMessage, messageItem) {
+      editButton.addEventListener("click", () => {
+        chatMessage.appendChild(userMESSAGE.editMessageComponent(messageItem))
+        editButton.setAttribute("disabled", "true")
+
+      })
+    },
+    editMessageSave: function (saveBtn, chatBox) {
+      saveBtn.addEventListener("click", () => {
+        let userMessage = document.querySelector("#edit-message-input").value;
+        let userID = sessionStorage.getItem("id");
+        let updatedMessage = utilityFunc.createMessageObj(userID, userMessage, id)
+        let id = event.target.id;
+        API.updateApi("messages", updatedMessage, id).then(()=> {
+          chatBox.innerHTML = ""
+          userMESSAGE.chatBoxComponent()
+        })
+      })
     }
   };
   
   export { EVENT };
+ 
+ 
   // ****This is the super long way but pretty cool******
   // for (const value of Object.values(users)) {
   //   console.log("object", value.user_name);

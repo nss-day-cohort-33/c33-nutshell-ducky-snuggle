@@ -1,45 +1,36 @@
 import { API } from "./api/api_manager.js";
-import { utilityFunc } from "./utility.js";
 import { EVENT } from "./event.js";
 
 const userMESSAGE = {
   chatBoxComponent: function() {
     API.getAllFromApi("messages", "_expand=user").then(messages => {
       let chatBox = document.querySelector("#chat-box");
-      messages.forEach(messageitem => {
+      messages.forEach(messageItem => {
         let userName =  sessionStorage.getItem("user_name")
         let chatMessage = document.createElement("div");
         let deleteMessageBtn = document.createElement("button");
         let editMessageBtn = document.createElement("button")
         let formatMessgaeBtn = document.createElement("button")
-        chatMessage.setAttribute("id", `chat-message-${messageitem.id}`);
-        deleteMessageBtn.setAttribute("id", `${messageitem.id}`);
-        editMessageBtn.setAttribute("id", `${messageitem.id}`)
-        formatMessgaeBtn.setAttribute("id", `${messageitem.id}`)
+        let buttonContainer = document.createElement("div")
+        chatMessage.setAttribute("id", `chat-message-${messageItem.id}`);
+        chatMessage.setAttribute("class", "chat-message")
+        deleteMessageBtn.setAttribute("id", `${messageItem.id}`);
+        editMessageBtn.setAttribute("id", `${messageItem.id}`)
+        formatMessgaeBtn.setAttribute("id", `${messageItem.id}`)
         deleteMessageBtn.textContent = "X";
         editMessageBtn.textContent = "Edit"
         formatMessgaeBtn.textContent= "..."
-        chatMessage.innerHTML += `<p><strong>${messageitem.user.user_name}:</strong> ${messageitem.message}</p>`;
-        if (userName === messageitem.user.user_name) {
-          // chatMessage.appendChild(formatMessgaeBtn)
-          chatMessage.addEventListener("click", () => {
-            chatMessage.appendChild(deleteMessageBtn);
-            chatMessage.appendChild(editMessageBtn);
-            deleteMessageBtn.addEventListener("click", () => {
-              let id = event.target.id;
-              chatBox.innerHTML = ""
-              API.deleteFromApi("messages", id).then(x => {
-                chatBox.innerHTML = ""
-                userMESSAGE.chatBoxComponent()
-                // -- WHY DOES THIS WORK?!?!?!?! --//
-              })
-            })
-            editMessageBtn.addEventListener("click", () => {
-              chatMessage.appendChild(userMESSAGE.editMessageComponent(messageitem))
-              editMessageBtn.setAttribute("disabled", "true")
-  
-            })
-          })
+        chatMessage.innerHTML += `<div class="message"><strong>${messageItem.user.user_name}: </strong> ${messageItem.message}</div>`;
+        if (userName === messageItem.user.user_name) {
+          deleteMessageBtn.setAttribute("style", "display: none")
+          editMessageBtn.setAttribute("style", "display: none")
+          chatMessage.appendChild(formatMessgaeBtn)
+          EVENT.addRemoveFormatBtns(formatMessgaeBtn, deleteMessageBtn, editMessageBtn)
+          chatMessage.appendChild(buttonContainer)
+          buttonContainer.appendChild(deleteMessageBtn);
+          buttonContainer.appendChild(editMessageBtn);
+          EVENT.deleteMessage(deleteMessageBtn, chatBox)
+          EVENT.editMessage(editMessageBtn, chatMessage, messageItem)
         }
         chatBox.appendChild(chatMessage);
       });
@@ -64,6 +55,7 @@ const userMESSAGE = {
     messageContainer.appendChild(messageInputLabel);
     messageContainer.appendChild(messageInput);
     userMESSAGE.chatBoxComponent();
+    // EVENT.submitMessage()  -Currently wont function when placed directly in Component-
     return messageContainer;
   },
   editMessageComponent: function(usermessage) {
@@ -75,29 +67,20 @@ const userMESSAGE = {
     <textarea id="edit-message-input">${usermessage.message}</textarea>
     `
     saveEditMessageButton.textContent = "Save"
+    editMessageDiv.setAttribute("class", "edit-message-container")
     editMessageDiv.innerHTML = editMessageForm;
     saveEditMessageButton.setAttribute("id", `${usermessage.id}`)
     editMessageDiv.appendChild(saveEditMessageButton)
-    saveEditMessageButton.addEventListener("click", () => {
-      let userMessage = document.querySelector("#edit-message-input").value;
-      let userID = sessionStorage.getItem("id");
-      let updatedMessage = utilityFunc.createMessageObj(userID, userMessage, id)
-      let id = event.target.id;
-      API.updateApi("messages", updatedMessage, id).then(x => {
-        chatBox.innerHTML = ""
-        userMESSAGE.chatBoxComponent()
-        // -- WHY DOES THIS WORK?!?!?!?! --//
-      })
-    })
+    EVENT.editMessageSave(saveEditMessageButton, chatBox)
     return editMessageDiv;
   }
 };
 
-function postMessage() {
-  let messageInput = document.querySelector("#message-input").value;
-  let userID = sessionStorage.getItem("id");
-  let messageObj = utilityFunc.createMessageObj(userID, messageInput);
-  API.saveToApi("messages", messageObj);
-}
+// function postMessage() {
+//   let messageInput = document.querySelector("#message-input").value;
+//   let userID = sessionStorage.getItem("id");
+//   let messageObj = utilityFunc.createMessageObj(userID, messageInput);
+//   API.saveToApi("messages", messageObj);
+// }
 
-export { userMESSAGE, postMessage };
+export { userMESSAGE };

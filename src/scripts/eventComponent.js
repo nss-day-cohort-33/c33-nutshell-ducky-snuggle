@@ -43,7 +43,7 @@ const eventComponent = {
             eventListContainer.innerHTML = ""
             pastEventDiv.innerHTML = ""
             this.createDynamicHeading()
-            API.getDatesFromApi("events", userId).then(RENDER.insertComponent)
+            API.getDatesFromApi("events", userId).then(RENDER.insertEventComponent)
         })
     },
     createEventForm: function () {
@@ -81,7 +81,7 @@ const eventComponent = {
             .then( events => {
                 // API.getFromApi("event", userId).then(RENDER.insertComponent)
                 // loadEventBox()
-                RENDER.getAndDisplay(newEvent)
+                RENDER.getAndDisplayEvents(newEvent)
                 this.createDynamicHeading()
                 console.log("saved")
             })
@@ -113,7 +113,7 @@ const eventComponent = {
             API.deleteFromApi("events", eventObj.id)
             .then (data => {
                 // API.getFromApi("event", userId).then(RENDER.insertComponent)
-                RENDER.getAndDisplay(eventObj)
+                RENDER.getAndDisplayEvents(eventObj)
             })
         })
 
@@ -165,7 +165,7 @@ const eventComponent = {
             editedEvent.id = eventId
             API.updateApi("events", editedEvent)
             .then( () => {
-                RENDER.getAndDisplay(eventObj)
+                RENDER.getAndDisplayEvents(eventObj)
             })
         })
     }

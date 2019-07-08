@@ -17,21 +17,15 @@ const API = {
             }
         })
     },
-    // getFromApi: function (database) {
-    //     // ADD SORT BY DATE [&_sort=event_date&_order=asc]
-    //     return fetch(`http://localhost:3000/${database}`)
-    //     .then(data => data.json())
-    // },
 
     getFromApi: function (database, userId) {
         let url = `http://localhost:3000/${database}`
         if (userId) {
           url += `?id_ne=${userId}`
         }
-        return fetch(url)
+        return fetch (url)
         .then( data => data.json() )
     },
-
     getDatesFromApi: function (database, userId) {
         // ADD SORT BY DATE [&_sort=event_date&_order=asc]
         return fetch(`http://localhost:3000/${database}?user_id=${userId}&_sort=event_date&_order=asc`)
@@ -47,11 +41,7 @@ const API = {
             body: JSON.stringify(info)
         })
     },
-    // searchUsersApi: function (username) {
-    //     // Changed "user_name" to "q" to allow general query for email address
-    //     return fetch(`http://localhost:3000/users?q=${username}&id_ne=${userId}`)
-    //     .then(data => data.json())
-    // },
+
     searchUsersApi: function (username, userId) {
         let url = `http://localhost:3000/users?q=${username}`
         if (userId) {

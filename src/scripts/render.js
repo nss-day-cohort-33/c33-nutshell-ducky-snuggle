@@ -4,7 +4,7 @@ import {eventComponent} from "./eventComponent.js"
 import {friendComponent} from "./friendComponent.js"
 
 const RENDER = {
-  insertComponent: function(infoArray) {
+    insertEventComponent: function(infoArray) {
       for (let i = 0; i < infoArray.length; i++) {
           targetContainer.appendChild(eventComponent.createEventComponent(infoArray[i]));
         }
@@ -14,15 +14,15 @@ const RENDER = {
             targetContainer.appendChild(friendComponent.createFriendList(infoArray[i]));
           }
     },
-    insertForm: function () {
+    insertEventForm: function () {
         targetContainer.appendChild(eventComponent.createEventForm())
     },
-    getAndDisplay: function (eventObj) {
+    getAndDisplayEvents: function (eventObj) {
         // targetContainer.innerHTML = ""
         document.querySelector("#event-list-container").innerHTML = ""
         document.querySelector("#past-event-div").innerHTML = ""
         API.getDatesFromApi("events", eventObj.user_id)
-        .then(this.insertComponent)
+        .then(this.insertEventComponent)
     },
     getAndDisplayFriends: function () {
         // targetContainer.innerHTML = ""

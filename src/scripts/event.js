@@ -65,12 +65,14 @@ const EVENT = {
             API.searchUsersApi(email).then(email => {
               if (email.length === 0) {
                 console.log(userObj);
-                API.saveToApi("user", userObj);
+                API.saveToApi("users", userObj)
+                .then(() => {
                   sessionStorage.setItem("user_name", userName)
-                  sessionStorage.setItem("id", makeRegId())
-                  let userID = sessionStorage.makeItem("id")
+                  let userID = sessionStorage.getItem("id")
+                  sessionStorage.setItem("id", userID)
                   targetContainer.innerHTML = ""
                   console.log("logged in")
+                })
               // loadEventBox()
               } else if (email === user[0].email) {
                   alert(`There's an existing account registered under ${email}. Please try again.`)

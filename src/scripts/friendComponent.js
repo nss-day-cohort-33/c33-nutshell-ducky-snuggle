@@ -28,8 +28,8 @@ const friendComponent = {
             friendContainer.prepend(friendSearchContainer)
             friendSearchContainer.innerHTML = `
                 <fieldset>
-                <label for="friend-input">Username:</label>
-                <input type="text" name="friend-input" id="friend-input" placeholder="Search by username>
+                <label for="friend-input">Find friends:</label>
+                <input type="text" name="friend-input" id="friend-input" placeholder="Search by username">
                 </fieldset>
             `
             API.getFromApi("users", userId).then(RENDER.insertFriendComponent)
@@ -38,7 +38,7 @@ const friendComponent = {
                 console.log(friendInput.value)
                 const searchTerm = event.target.value
                 console.log(searchTerm)
-                API.getData(searchTerm, userId).then(users => {
+                API.searchUsersApi(searchTerm, userId).then(users => {
                     users.forEach(user => {
                         console.log(users)
                         if(user.user_name.includes(friendInput.value)) {

@@ -23,8 +23,11 @@ function saveNewsBtn() {
                     targetContainer.innerHTML = ""
                     API.getFromApi("news", userId)
                         .then(info => {
+                            console.log(info)
                             targetContainer.appendChild(newsFunc.newsArtComponent())
-                            newToDomComp(info)
+                            info.forEach(info => {
+                                newToDomComp(info)
+                            })
                         })
                 })
         }
@@ -33,28 +36,9 @@ function saveNewsBtn() {
 }
 let userId = sessionStorage.getItem("id")
 
-function deleteNewsBtn(userId) {
-    let allNewsDeleteButns = document.querySelectorAll(".delete-news-btn")
-    allNewsDeleteButns.forEach(deleteBtn => {
-        deleteBtn.addEventListener("click", () => {
-            console.log("delete button", `it works ${userId}`)
-            let deleteBtnId = event.target.id.split("-")[3]
-            console.log("deleteBtnId", deleteBtnId)
-            API.deleteFromApi("news", deleteBtnId)
-                .then(data => {
-                    targetContainer.innerHTML = ""
-                    API.getFromApi("news", userId)
-                        .then(info => {
-                            targetContainer.appendChild(newsFunc.newsArtComponent())
-                            newToDomComp(info)
-                        })
-                })
-        })
 
-    })
-}
 
-function editNewsBtn (id) {
+function editNewsBtn(id) {
     let allEditNewsBtn = document.querySelectorAll(".edit-news-btn")
     allEditNewsBtn.forEach(editBtn => {
         editBtn.addEventListener("click", () => {
@@ -65,17 +49,66 @@ function editNewsBtn (id) {
     })
 }
 
-function newToDomComp(info) {
-        targetContainer.innerHTML +=
-    `
-    <div>
-    <h3>News Title: ${info.news_title}
-    <h4>News Synopsis: ${info.news_synopsis}
+// function deleteNewsBtn(info) {
+//     let selectAllDiv = document.querySelector("#containerId")
+
+    function newToDomComp(info) {
+    let newsAllDiv = document.createElement("div")
+    let newsContainer = document.createElement("div")
+    let newsDeleteBtn = document.createElement("button")
+    let newsEditBtn = document.createElement("button")
+
+    newsAllDiv.setAttribute("id", "containerId")
+    newsContainer.setAttribute("id", `news-${info.id}`)
+    newsContainer.setAttribute("class", "newsClass")
+
+    newsDeleteBtn.setAttribute("id", `delete-${info.id}`)
+    newsEditBtn.setAttribute("id", `edit-${info.id}`)
+    newsDeleteBtn.textContent = "Delete"
+    newsDeleteBtn.textContent = "Delete"
+    newsEditBtn.textContent = "Edit"
+
+    newsContainer.innerHTML +=
+        `
+        <h3>News Title: ${info.news_title}
+        <h4>News Synopsis: ${info.news_synopsis}
     <h4><a href="${info.news_url}" target="_blank">Article</a></h4>
-    </div>
-    <hr>
     `
-    };
+    newsAllDiv.appendChild(newsContainer)
+    targetContainer.appendChild(newsAllDiv)
+    newsContainer.appendChild(newsDeleteBtn)
+    newsContainer.appendChild(newsEditBtn)
+
+    newsAllDiv.addEventListener("click", () => {
+        console.log("you clicked here")
+        if (event.target.id.startsWith("delete")) {
+            let id = event.target.id.split("-")[1]
+            console.log(id)
+            API.deleteFromApi("news", id)
+                .then(data => {
+                    targetContainer.innerHTML = ""
+                    API.getFromApi("news", userId)
+                        .then(info => {
+                            targetContainer.appendChild(newsFunc.newsArtComponent())
+                            info.forEach(info => {
+                                newToDomComp(info)
+                            })
+                        })
+                })
+            }
+        })
+    newsAllDiv.addEventListener("click", () => {
+        
+    })
+}
+    // totaldiv.addEventListener("click", () => {
+    // if
+    //     console.log("delete button works")
+    // })
+
+    // editDeletebtns(info)
+    // deleteNewsBtn(info)
+// };
 
 let newsFunc = {
     // //function to generate new inputs to the dom
@@ -133,27 +166,38 @@ let newsFunc = {
     newsFromApi: function (userID) {
         API.getFromApi("news", userID)
             .then(info => {
-                // console.log("this is info", info[0].id)
+                console.log("this is info", info)
                 targetContainer.innerHTML = ""
-                let container = document.createElement("div")
-                let deleteBtn = document.createElement("button")
-                let editBtn = document.createElement("button")
-                
                 targetContainer.appendChild(newsFunc.newsArtComponent())
-                    info.forEach(info => {
-                    console.log ("loop over info", info)
-                newToDomComp(info)
-
                 saveNewsBtn()
-                deleteNewsBtn(userId)
-                editNewsBtn()
+                info.forEach(info => {
+                    // console.log("loop over info", info)
+                    newToDomComp(info)
+                    // editNewsBtn()
                 })
             })
     },
 
 }
 
+// function editDeletebtns(info) {
+//     let newsContainer = document.createElement("div")
+//     let newsDeleteBtn = document.createElement("button")
+//     let newsEditBtn = document.createElement("button")
+//     newsContainer.setAttribute("id", `news-${info.id}`)
+//     newsContainer.setAttribute("class", "newsClass")
+
+//     newsDeleteBtn.textContent = "Delete"
+//     newsEditBtn.textContent = "Edit"
+//     newsContainer.appendChild(newsDeleteBtn)
+//     newsContainer.appendChild(newsEditBtn)
+
+//     targetContainer.appendChild(newsContainer)
+//     return newsContainer
+// }
+
+
 // <button class="edit-news-btn" id="edit-news-button-${element.id}">Edit</button>
 // <button class="delete-news-btn" id="delete-news-button-${element.id}">Delete</button>
 
-export { newsFunc, newToDomComp }
+export { newsFunc }

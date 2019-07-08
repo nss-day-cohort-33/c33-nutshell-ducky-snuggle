@@ -2,8 +2,7 @@
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
-import { newsFunc, newToDomComp } from "./component.js";
-import { RENDER } from "./render.js"
+import { newsFunc } from "./newscomp.js";
 
 let targetContainer = document.querySelector("#container");
 
@@ -47,7 +46,7 @@ const EVENT = {
             // targetContainer.innerHTML = ""; --Will clear container upon submit--
         });
     },
-    
+
 
 };
 

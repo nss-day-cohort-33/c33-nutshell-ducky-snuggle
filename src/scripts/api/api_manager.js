@@ -24,7 +24,7 @@ const API = {
     },
 
     updateApi: function (database, info) {
-        return fetch(`http://localhost:3000/${database}`, {
+        return fetch(`http://localhost:3000/${database}/${info.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

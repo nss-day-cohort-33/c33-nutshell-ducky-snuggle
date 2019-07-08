@@ -88,9 +88,10 @@ const EVENT = {
     },
     editMessage: function (editButton, chatMessage, messageItem) {
       editButton.addEventListener("click", () => {
-        chatMessage.appendChild(userMESSAGE.editMessageComponent(messageItem))
+        // let editContainer = userMESSAGE.editMessageComponent(messageItem).outerHTML;
+        // chatMessage.innerHTML = editContainer
+        chatMessage.appendChild( userMESSAGE.editMessageComponent(messageItem))
         editButton.setAttribute("disabled", "true")
-
       })
     },
     editMessageSave: function (saveBtn, chatBox) {

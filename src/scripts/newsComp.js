@@ -138,6 +138,7 @@ let newsFunc = {
                 let container = document.createElement("div")
                 let deleteBtn = document.createElement("button")
                 let editBtn = document.createElement("button")
+                
                 targetContainer.appendChild(newsFunc.newsArtComponent())
                     info.forEach(info => {
                     console.log ("loop over info", info)

@@ -5,7 +5,8 @@ const userMESSAGE = {
   chatBoxComponent: function() {
     API.getAllFromApi("messages", "_expand=user").then(messages => {
       let chatBox = document.querySelector("#chat-box");
-      messages.forEach(messageItem => {
+      let lastMessages = messages.slice(0).slice(-10)
+      lastMessages.forEach(messageItem => {
         let userName =  sessionStorage.getItem("user_name")
         let chatMessage = document.createElement("div");
         let deleteMessageBtn = document.createElement("button");
@@ -17,9 +18,10 @@ const userMESSAGE = {
         deleteMessageBtn.setAttribute("id", `${messageItem.id}`);
         editMessageBtn.setAttribute("id", `${messageItem.id}`)
         formatMessgaeBtn.setAttribute("id", `${messageItem.id}`)
+        formatMessgaeBtn.setAttribute("class", "format-btn-message")
         deleteMessageBtn.textContent = "X";
         editMessageBtn.textContent = "Edit"
-        formatMessgaeBtn.textContent= "..."
+        formatMessgaeBtn.textContent= "- - -"
         chatMessage.innerHTML += `<div class="message"><strong>${messageItem.user.user_name}: </strong> ${messageItem.message}</div>`;
         if (userName === messageItem.user.user_name) {
           deleteMessageBtn.setAttribute("style", "display: none")

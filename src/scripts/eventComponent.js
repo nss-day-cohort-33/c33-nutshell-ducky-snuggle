@@ -78,7 +78,7 @@ const eventComponent = {
 
             API.saveToApi("events", newEvent)
             .then( data => data.json())
-            .then( dataJS => {
+            .then( events => {
                 // API.getFromApi("event", userId).then(RENDER.insertComponent)
                 // loadEventBox()
                 RENDER.getAndDisplay(newEvent)

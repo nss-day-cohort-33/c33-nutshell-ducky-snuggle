@@ -16,7 +16,7 @@ return `
 `
 }
 //Builds intial Login Screen//
-function loginUser () {
+function loginUserForm () {
 return `
 <h1>Welcome, Snuggle Ducks, to Nutshell</h1>
 <fieldset>
@@ -33,4 +33,4 @@ return `
 }
 
 
-export {registerUserForm, loginUser}
+export {registerUserForm, loginUserForm}

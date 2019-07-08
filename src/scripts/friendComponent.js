@@ -17,7 +17,6 @@ const friendComponent = {
         searchBtn.textContent = "Search for friends"
         targetContainer.appendChild(friendContainer)
         friendContainer.appendChild(searchBtn)
-
         searchBtn.addEventListener("click", () => {
             searchBtn.setAttribute("class", "hide")
             // eventListContainer.prepend(h1)

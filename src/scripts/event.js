@@ -44,14 +44,14 @@ const EVENT = {
     });
   },
   //event listener for the registration submit button//
-    submitRegBtn: function() {
-      document.querySelector("#submit-reg-btn").addEventListener("click", () => {
-          console.log("logged in")
-          // API.getFromApi("event", userID).then(RENDER.insertComponent)
-          // createEventForm()
-          eventComponent.loadEventBox()
-        });
-      },
+    // submitRegBtn: function() {
+    //   document.querySelector("#submit-reg-btn").addEventListener("click", () => {
+    //       console.log("logged in")
+    //       // API.getFromApi("event", userID).then(RENDER.insertComponent)
+    //       // createEventForm()
+    //       // eventComponent.loadEventBox()
+    //     });
+    //   },
     registerPageLink: function() {
       document.querySelector("#register-link").addEventListener("click", () => {
         event.preventDefault();

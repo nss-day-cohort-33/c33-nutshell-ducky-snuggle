@@ -29,6 +29,12 @@
       "email": "dad",
       "password": "dad",
       "id": 5
+    },
+    {
+      "user_name": "mom",
+      "email": "mom@hotmail.com",
+      "password": "mom",
+      "id": 6
     }
   ],
   "friends": [
@@ -98,21 +104,6 @@
       "userId": "3",
       "message": "Hi There",
       "id": 5
-    },
-    {
-      "userId": "1",
-      "message": "Test",
-      "id": 6
-    },
-    {
-      "userId": "1",
-      "message": "Test",
-      "id": 7
-    },
-    {
-      "userId": "1",
-      "message": "POST",
-      "id": 8
     }
   ],
   "tasks": [
@@ -171,13 +162,6 @@
       "event_date": "2019-07-14",
       "event_location": "somewhere",
       "id": 24
-    },
-    {
-      "userId": 1,
-      "event_name": "new event",
-      "event_date": "2019-07-11",
-      "event_location": "here",
-      "id": 25
     }
   ],
   "news": [

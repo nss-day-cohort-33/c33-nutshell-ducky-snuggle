@@ -92,3 +92,7 @@ label {
     color: lightgray;
 }
 
+#event-container {
+    border: 1px solid black;
+    width: 525px;
+}

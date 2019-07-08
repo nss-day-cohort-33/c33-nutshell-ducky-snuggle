@@ -75,23 +75,7 @@
   ],
   "news": [
     {
-      "user_id": 1,
-      "news_url": "https://www.miamiherald.com/news/weird/article232288957.html",
-      "news_title": "Mower Kills Man",
-      "news_synopsis": "Mower Kills Man, sleeping on the side of an Oregon Highway",
-      "news_time": 1562349302382,
-      "id": 2
-    },
-    {
-      "user_id": 1,
-      "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
-      "news_title": "This heat is poetic",
-      "news_synopsis": "Florida man goes on hilarious rant about summer heat",
-      "news_time": 1562350520324,
-      "id": 3
-    },
-    {
-      "user_id": 1,
+      "userId": 1,
       "news_url": "https://www.newser.com/story/269443/turns-out-a-cop-station-is-a-bad-place-to-steal-a-bike.html",
       "news_title": "Alleged Theft at Cop Station Goes as Well as You'd Expect",
       "news_synopsis": "Would-be bike thief caught within seconds: police",
@@ -99,7 +83,7 @@
       "id": 4
     },
     {
-      "user_id": 1,
+      "userId": 1,
       "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
       "news_title": "This heat is poetic",
       "news_synopsis": "Florida man goes on hilarious rant about summer heat",
@@ -107,12 +91,12 @@
       "id": 5
     },
     {
-      "user_id": 1,
-      "news_url": "jjj",
-      "news_title": "jjj",
-      "news_synopsis": "jjj",
-      "news_time": 1562614179125,
-      "id": 6
+      "userId": 1,
+      "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
+      "news_title": "This heat is poetic",
+      "news_synopsis": "Florida man goes on hilarious rant about summer heat",
+      "news_time": 1562624106361,
+      "id": 1
     }
   ]
 }

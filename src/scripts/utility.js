@@ -10,7 +10,7 @@ let utilityFunc = {
     },
     createNewsObj: function (newsTitle, newsSynopsis, newsUrl, userId, timeStamp) {
         return {
-            user_id: parseInt(userId),
+            userId: parseInt(userId),
             news_url: newsUrl,
             news_title: newsTitle,
             news_synopsis: newsSynopsis,

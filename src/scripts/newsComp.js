@@ -38,21 +38,44 @@ let userId = sessionStorage.getItem("id")
 
 
 
-function editNewsBtn(id) {
-    let allEditNewsBtn = document.querySelectorAll(".edit-news-btn")
-    allEditNewsBtn.forEach(editBtn => {
-        editBtn.addEventListener("click", () => {
-            console.log("edit button", "it works")
-            let editBtnId = event.target.id.split("-")[3]
-            console.log("editBtnId", editBtnId)
-        })
+function editNewsForm(news) {
+    return `
+<input id="news-title-edit" type="text" value="${news.news_title}">
+<input id="news-edit-id" type="hidden" value="${news.id}">
+<input id="news-synopsis-edit" type="text" value="${news.news_synopsis}">
+<input id="news-url-edit" type="url" value="${news.news_url}"  >
+<button id="update-news-save-btn">Save</button>
+`
+}
+const createEditForm = (where, editform) => {
+    document.querySelector(`#${where}`).innerHTML = editform
+    document.querySelector("#update-news-save-btn").addEventListener("click", () => {
+        let newsTitleUp = document.querySelector("#news-title-edit").value
+        let newsSynUp = document.querySelector("#news-synopsis-edit").value
+        let newsUrlUp = document.querySelector("#news-url-edit").value
+        let newsIdUp = document.querySelector("#news-edit-id").value
+        let userId = sessionStorage.getItem("id")
+        let newsTimeUp = Date.now()
+        let updateNewsObj = utilityFunc.createNewsObj(newsTitleUp, newsSynUp, newsUrlUp, userId, newsTimeUp)
+        updateNewsObj.id = newsIdUp
+        console.log("updateObj", updateNewsObj)
+        API.updateApi("news", updateNewsObj)
+            .then(() => {
+                targetContainer.innerHTML = ""
+                API.getFromApi("news", userId)
+                    .then(info => {
+                        console.log(info)
+                        targetContainer.appendChild(newsFunc.newsArtComponent())
+                        info.forEach(info => {
+                            newToDomComp(info)
+
+                        })
+                    })
+            })
     })
 }
 
-// function deleteNewsBtn(info) {
-//     let selectAllDiv = document.querySelector("#containerId")
-
-    function newToDomComp(info) {
+function newToDomComp(info) {
     let newsAllDiv = document.createElement("div")
     let newsContainer = document.createElement("div")
     let newsDeleteBtn = document.createElement("button")
@@ -68,11 +91,17 @@ function editNewsBtn(id) {
     newsDeleteBtn.textContent = "Delete"
     newsEditBtn.textContent = "Edit"
 
+    var moment = require("moment");
+    let date = moment(info.news_time).format("MMM Do YYYY");
+    console.log(date)
+
     newsContainer.innerHTML +=
         `
-        <h3>News Title: ${info.news_title}
-        <h4>News Synopsis: ${info.news_synopsis}
-    <h4><a href="${info.news_url}" target="_blank">Article</a></h4>
+        <h3>News Title: ${info.news_title}</h4>
+        <h4>News Synopsis: ${info.news_synopsis}</h4>
+        <h4><a href="${info.news_url}" target="_blank">Article</a></h4>
+        <p><em>Date of Entry: ${date}</em></p>
+        <h4>
     `
     newsAllDiv.appendChild(newsContainer)
     targetContainer.appendChild(newsAllDiv)
@@ -80,7 +109,7 @@ function editNewsBtn(id) {
     newsContainer.appendChild(newsEditBtn)
 
     newsAllDiv.addEventListener("click", () => {
-        console.log("you clicked here")
+        // console.log("delete", "you clicked here")
         if (event.target.id.startsWith("delete")) {
             let id = event.target.id.split("-")[1]
             console.log(id)
@@ -95,19 +124,24 @@ function editNewsBtn(id) {
                             })
                         })
                 })
-            }
-        })
-    newsAllDiv.addEventListener("click", () => {
-        
+        }
+        if (event.target.id.startsWith("edit")) {
+            let id = event.target.id.split("edit")[1]
+            console.log("edit", id)
+            let editForm = editNewsForm(info)
+            console.log(editForm)
+            createEditForm(newsContainer.id, editForm)
+
+        }
     })
 }
-    // totaldiv.addEventListener("click", () => {
-    // if
-    //     console.log("delete button works")
-    // })
+// totaldiv.addEventListener("click", () => {
+// if
+//     console.log("delete button works")
+// })
 
-    // editDeletebtns(info)
-    // deleteNewsBtn(info)
+// editDeletebtns(info)
+// deleteNewsBtn(info)
 // };
 
 let newsFunc = {

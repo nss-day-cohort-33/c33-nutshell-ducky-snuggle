@@ -19,7 +19,7 @@ const API = {
     },
 
     getFromApi: function (database, userId) {
-        return fetch(`http://localhost:3000/${database}?user_id=${userId}`)
+        return fetch(`http://localhost:3000/${database}?user_id=${userId}&_sort=news_time&_order=dec`)
         .then(data => data.json())
     },
 

@@ -20,45 +20,42 @@ const taskComp = {
     addTaskForm: function () {
         return `
         <h1> Task Manager <h1>
-        <form>
             <fieldset> 
             <label for="taskName">Task:</label>
-            <input type="text" name="taskName"/>
+            <input id="taskInput" type="text" name="taskName"/>
             </fieldset>
             <fieldset> 
             <label for="taskDate">Date Due:</label>
-            <input type="date" name="taskDate"/>
+            <input id="taskDate" type="date" name="taskDate"/>
             </fieldset>
-        </form>
         `
     },
 
-//FIXME:
-    createTaskComp: function (id, task, date) {
+
+    createTaskComp: function (taskArray) {
         let taskName = `
         <h3> To Do: <h3>
-        <div id = "indvTask">
-            <p id="taskComp-${id}" value="${task}"> ${task} </p> 
-            <p> ${date} </p>
-        </div>
+            <p id="taskComp-${taskArray.id}"> ${taskArray.task} </p> 
+            <p id="taskCompDate-${taskArray.id}"> ${taskArray.date_due} </p>
         `
-        // let taskEl = document.querySelector(`#taskComp-${id}`).value
-        // console.log("html", taskEl)
-        // let taskDiv = document.querySelector("#indvTask")
-        // taskEl.addEventListener("keyup", () => {
-        //     if(event.keycode === 13){
-        //         taskDiv = ""
-        //         addTaskEditForm(taskEl.value)
-        //     }
-        // })
         return taskName
     },
-
+    
     addTaskEditForm: function (text) {
+        console.log(text)
         return `
-        <input type="text" name="newTaskName" value="${text}"/>
+        <input type="text" name="newTaskName" value=" ${text} "/>
         `
     },
 }
 
 export { taskComp };
+
+
+// taskEl.addEventListener("keyup", () => {
+//     if(event.keycode === 13){
+//         taskDiv = ""
+//         addTaskEditForm(taskEl.value)
+//     }
+// })
+

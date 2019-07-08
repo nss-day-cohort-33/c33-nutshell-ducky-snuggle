@@ -45,29 +45,14 @@ const EVENT = {
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       });
     },
-  registerPageLink: function() {
-    document.querySelector("#register-link").addEventListener("click", () => {
-      event.preventDefault();
-      targetContainer.innerHTML = registerUserForm();
-      EVENT.submitRegBtn();
-    });
-  },
-  submitRegBtn: function() {
-    document.querySelector("#submit-reg-btn").addEventListener("click", () => {
-      console.log("you clicked the save");
-      let userName = document.querySelector("#userName").value;
-      let email = document.querySelector("#email").value;
-      let userObj = utilityFunc.createUserObj(userName, email);
-      console.log(userObj);
-      API.saveToApi("user", userObj);
-      // targetContainer.innerHTML = ""; --Will clear container upon submit--
-    });
-  },
   createTaskEditForm: function() {
-    document.querySelector("#taskList-container").addEventListener("click", () =>{
+    let container = document.querySelector("#taskListCont")
+   
+    // console.log("an event listener was added")
+    container.addEventListener("click", () =>{
       if(event.target.id.startsWith("taskComp")){
-        var target = event.target
-        var text = target.innerHTML
+        let target = event.target
+        let text = target.innerText
         target.innerHTML = taskComp.addTaskEditForm(text)
       }
     })

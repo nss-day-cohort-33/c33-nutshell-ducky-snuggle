@@ -21,7 +21,7 @@ const RENDER = {
         // targetContainer.innerHTML = ""
         document.querySelector("#event-list-container").innerHTML = ""
         document.querySelector("#past-event-div").innerHTML = ""
-        API.getDatesFromApi("events", eventObj.user_id)
+        API.getDatesFromApi("events", eventObj.userId)
         .then(this.insertEventComponent)
     },
     getAndDisplayFriends: function () {

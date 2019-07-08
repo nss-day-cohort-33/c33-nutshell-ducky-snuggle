@@ -61,6 +61,21 @@
       "user": 1,
       "userId": 2,
       "id": 5
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 8
     }
   ],
   "messages": [
@@ -126,6 +141,13 @@
       "event_date": "2019-07-14",
       "event_location": "somewhere",
       "id": 24
+    },
+    {
+      "userId": 1,
+      "event_name": "new event",
+      "event_date": "2019-07-11",
+      "event_location": "here",
+      "id": 25
     }
   ],
   "news": [

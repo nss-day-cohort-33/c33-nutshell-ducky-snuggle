@@ -10,7 +10,7 @@ let utilityFunc = {
     },
     createEventObj: function (userId, eventName, eventDate, eventLocation) {
         return {
-            user_id: userId,
+            userId: userId,
             event_name: eventName,
             event_date: eventDate,
             event_location: eventLocation

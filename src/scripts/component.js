@@ -21,7 +21,7 @@ const userMESSAGE = {
         formatMessgaeBtn.setAttribute("class", "format-btn-message")
         deleteMessageBtn.textContent = "X";
         editMessageBtn.textContent = "Edit"
-        formatMessgaeBtn.textContent= "- - -"
+        formatMessgaeBtn.textContent= "..."
         chatMessage.innerHTML += `<div class="message"><strong>${messageItem.user.user_name}: </strong> ${messageItem.message}</div>`;
         if (userName === messageItem.user.user_name) {
           deleteMessageBtn.setAttribute("style", "display: none")

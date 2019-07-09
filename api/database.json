@@ -29,6 +29,12 @@
       "email": "dad",
       "password": "dad",
       "id": 5
+    },
+    {
+      "user_name": "mom",
+      "email": "mom@hotmail.com",
+      "password": "mom",
+      "id": 6
     }
   ],
   "friends": [
@@ -80,9 +86,69 @@
   ],
   "messages": [
     {
-      "userId": 1,
-      "message": "this is the best social media app ever",
+      "userId": "1",
+      "message": "this is the best social media app ever!!!",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "message": "LOL, OK!",
+      "id": 2
+    },
+    {
+      "userId": "1",
+      "message": "Test... ME\n!!! YAYYYY!!!!!!!",
+      "id": 3
+    },
+    {
+      "userId": "3",
+      "message": "Hi There",
+      "id": 5
+    },
+    {
+      "userId": "2",
+      "message": "ddd",
+      "id": 6
+    },
+    {
+      "userId": "2",
+      "message": "sss",
+      "id": 7
+    },
+    {
+      "userId": "1",
+      "message": "YAY!",
+      "id": 8
+    },
+    {
+      "userId": "1",
+      "message": "Test",
+      "id": 9
+    },
+    {
+      "userId": "1",
+      "message": "Test",
+      "id": 10
+    },
+    {
+      "userId": "1",
+      "message": "test",
+      "id": 11
+    },
+    {
+      "userId": "1",
+      "message": "YAY",
+      "id": 12
+    },
+    {
+      "userId": "1",
+      "message": "YAY",
+      "id": 13
+    },
+    {
+      "userId": "1",
+      "message": "Test",
+      "id": 14
     }
   ],
   "tasks": [
@@ -144,9 +210,9 @@
     },
     {
       "userId": 1,
-      "event_name": "new event",
-      "event_date": "2019-07-11",
-      "event_location": "here",
+      "event_name": "Test",
+      "event_date": "2019-07-10",
+      "event_location": "aaa",
       "id": 25
     }
   ],

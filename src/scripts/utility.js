@@ -8,6 +8,12 @@ let utilityFunc = {
             password: password
         }
     },
+    createMessageObj: function (userID, userMessage) {
+        return {
+            userId: userID,
+            message: userMessage
+        }
+    },
     createEventObj: function (userId, eventName, eventDate, eventLocation) {
         return {
             userId: userId,

@@ -1,7 +1,8 @@
-//event listener for the registration submit button//
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
+import { userMESSAGE } from "./component.js"
+import { postMessage } from "./api/objet_manager.js"
 import { RENDER } from "./render.js"
 import { eventComponent } from "./eventComponent.js";
 
@@ -30,13 +31,27 @@ const EVENT = {
           sessionStorage.setItem("id", user[0].id )
           let userID = sessionStorage.getItem("id")
           targetContainer.innerHTML = ""
-          console.log("logged in")
-          // API.getFromApi("event", userID).then(RENDER.insertComponent)
-          // createEventForm()
-          eventComponent.loadEventBox()
-          }
-        });
-      },
+          RENDER.renderAllComponents()
+          //--The Event Listener for Messages should not have to be in this EVENT --//
+        }
+      });
+  },
+  registerPageLink: function() {
+    document.querySelector("#register-link").addEventListener("click", () => {
+      event.preventDefault();
+      targetContainer.innerHTML = registerUserForm();
+      EVENT.submitRegBtn();
+    });
+  },
+  //event listener for the registration submit button//
+    // submitRegBtn: function() {
+    //   document.querySelector("#submit-reg-btn").addEventListener("click", () => {
+    //       console.log("logged in")
+    //       // API.getFromApi("event", userID).then(RENDER.insertComponent)
+    //       // createEventForm()
+    //       // eventComponent.loadEventBox()
+    //     });
+    //   },
     registerPageLink: function() {
       document.querySelector("#register-link").addEventListener("click", () => {
         event.preventDefault();
@@ -50,8 +65,8 @@ const EVENT = {
         if (event.keyCode === 13) {
           this.submitReg()
         }
-      }
-    )},
+      });
+    },
     submitReg: function() {
       // document.querySelector("#submit-reg-btn").addEventListener("click", () => {
         console.log("you clicked the save");
@@ -59,7 +74,7 @@ const EVENT = {
         let email = document.querySelector("#email").value;
         let password = document.querySelector("#password").value;
         let userObj = utilityFunc.createUserObj(userName, email, password);
-
+        console.log(userObj);
         API.searchUsersApi(userName).then(user => {
           if (user.length === 0){
             API.searchUsersApi(email).then(email => {
@@ -88,8 +103,72 @@ const EVENT = {
               alert(`${userName} is already taken. Please try again.`)
           }
         });
-      // });
+    },
+    submitMessage: function() {
+          let messageValue = document.querySelector("#message-input");
+          messageValue.addEventListener("keypress", event => {
+            if (event.charCode === 13) {
+              postMessage();
+              API.getAllFromApi("messages")
+              .then(data => {
+                let chatBox = document.querySelector("#chat-box")
+                // let navBar = document.querySelector("#nav-container")
+                // navBar.innerHTML = ""
+                // targetContainer.innerHTML = "";
+                // RENDER.renderAllComponents();
+                chatBox.innerHTML = ""
+                userMESSAGE.chatBoxComponent()
+              })
+            }
+          })
+    },
+    addRemoveFormatBtns: function (formatButton, deleteButton, editButton) {
+      formatButton.addEventListener("click", () => {
+        if (deleteButton.style.display === "none") {
+          deleteButton.style.display = "block";
+        } else {
+          deleteButton.style.display = "none";
+        }
+        if (editButton.style.display === "none") {
+          editButton.style.display = "block";
+        } else {
+          editButton.style.display = "none";
+        }
+      })
+    },
+    deleteMessage: function (deleteBtn, chatBox) {
+      deleteBtn.addEventListener("click", () => {
+        let id = event.target.id;
+        chatBox.innerHTML = ""
+        API.deleteFromApi("messages", id).then(()=> {
+          chatBox.innerHTML = ""
+          userMESSAGE.chatBoxComponent()
+        })
+      })
+    },
+    editMessage: function (editButton, chatMessage, messageItem) {
+      editButton.addEventListener("click", () => {
+        // let editContainer = userMESSAGE.editMessageComponent(messageItem).outerHTML;
+        // chatMessage.innerHTML = editContainer
+        chatMessage.appendChild( userMESSAGE.editMessageComponent(messageItem))
+        editButton.setAttribute("disabled", "true")
+      })
+    },
+    editMessageSave: function (saveBtn, chatBox) {
+      saveBtn.addEventListener("click", () => {
+        let userMessage = document.querySelector("#edit-message-input").value;
+        let userID = sessionStorage.getItem("id");
+        let updatedMessage = utilityFunc.createMessageObj(userID, userMessage)
+        let eventId = event.target.id;
+        updatedMessage.id = eventId
+        console.log(updatedMessage)
+        API.updateApi("messages", updatedMessage).then(()=> {
+          chatBox.innerHTML = ""
+          userMESSAGE.chatBoxComponent()
+        })
+      })
     }
+    // eventComponent.loadEventBox()
   };
 
   // NEED TO FIND BETTER PLACE FOR THIS
@@ -101,6 +180,8 @@ const EVENT = {
 
 
   export { EVENT };
+ 
+ 
   // ****This is the super long way but pretty cool******
   // for (const value of Object.values(users)) {
   //   console.log("object", value.user_name);

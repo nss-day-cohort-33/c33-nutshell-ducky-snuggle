@@ -1,27 +1,30 @@
 
-//SN- this is where my imports start
-import {registerUserForm, loginUser} from "./login_register.js";
+
+import { loginUserForm } from "./login_register.js";
 import { EVENT } from "./event.js";
-import { taskComp } from "./component.js";
-import { render } from "./render.js";
-import { API } from "./api/api_manager.js";
-//SN- This is where they end
+// import {API} from "./api/api_manager.js"
+import {RENDER} from "./render.js"
+// import { eventComponent } from "./eventComponent.js";
+// import { friendComponent } from "./friendComponent.js";
 
 // SN- This is how I'm rendering it. I will probably need to move this
 
-render.insertMainTaskComponent() //SN
 
+let targetContainer = document.querySelector("#container");
+targetContainer.innerHTML = loginUserForm();
 
-function getAndDisplayTasks (database, userId) { //SN
-  let taskList = document.querySelector("#taskListCont")
-  let userIdEl = 1 // add this later!!!! sessionStorage.getItem("id")
-  taskList.innerHTML = ""
-  API.getFromApi("task", userIdEl)
-  .then( Data => render.listEntries(Data))
+// Calls click/keypress event listeners for login
+if (sessionStorage.getItem("user_name")) {
+  RENDER.renderAllComponents()
+} else {
+  targetContainer.innerHTML = loginUserForm();
+  EVENT.loginUserClick();
+  EVENT.loginUserKeyup();
+  EVENT.registerPageLink();
 }
 
-EVENT.completedCheckMark() //SN
+// let userID = sessionStorage.getItem("id")
+// console.log(userID)
 
-// SN- This is where task ends on main
 
-export { getAndDisplayTasks}
+export {targetContainer}

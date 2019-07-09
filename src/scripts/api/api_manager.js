@@ -25,7 +25,9 @@ const API = {
         .then(data => data.json())
     },
 
-    updateApi: function (database, id, editedObject) {
+    //SN - this is your put call it may be different
+
+    updateApi: function (database, id, editedObject) { //SN
         return fetch(`http://localhost:3000/${database}/${id}`, {
             method: "PUT",
             headers: {
@@ -35,6 +37,8 @@ const API = {
         })
         .then(res => res.json())
     },
+
+
     loginFromApi: function (username) {
         return fetch(`http://localhost:3000/user?user_name=${username}`)
         .then(data => data.json())

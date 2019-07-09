@@ -1,17 +1,18 @@
+
+//SN- this is where my imports start
 import {registerUserForm, loginUser} from "./login_register.js";
 import { EVENT } from "./event.js";
 import { taskComp } from "./component.js";
 import { render } from "./render.js";
 import { API } from "./api/api_manager.js";
+//SN- This is where they end
 
-console.log(
-  "Your Webpack application is set up and ready to go. Please start writing code."
-);
+// SN- This is how I'm rendering it. I will probably need to move this
 
-render.insertMainTaskComponent()
+render.insertMainTaskComponent() //SN
 
 
-function getAndDisplayTasks (database, userId) {
+function getAndDisplayTasks (database, userId) { //SN
   let taskList = document.querySelector("#taskListCont")
   let userIdEl = 1 // add this later!!!! sessionStorage.getItem("id")
   taskList.innerHTML = ""
@@ -19,20 +20,8 @@ function getAndDisplayTasks (database, userId) {
   .then( Data => render.listEntries(Data))
 }
 
-EVENT.completedCheckMark()
+EVENT.completedCheckMark() //SN
 
-// let addListContainer = document.querySelector("#addTask-container");
-// let taskListContainer = document.querySelector("#taskList-container")
-// addListContainer.innerHTML += taskComp.addTaskForm()
-// taskListContainer.innerHTML += taskComp.createTaskComp(2,"do this","july 4th")
-// targetContainer.innerHTML += taskComp.addTaskEditForm("But why?")
-
-// EVENT.createTaskEditForm()
-
-// targetContainer.innerHTML += loginUser();
-//registerUserForm;
-
-// EVENT.loginUserBtn();
-// EVENT.registerPageLink();
+// SN- This is where task ends on main
 
 export { getAndDisplayTasks}

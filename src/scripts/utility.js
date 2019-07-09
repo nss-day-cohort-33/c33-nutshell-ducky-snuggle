@@ -1,6 +1,6 @@
 //facotry functions to support build objects to API
 
-let utilityFunc = {
+let utilityFunc = { //SN- these are all for tasks currently
     createUserObj: function (userName, email, password) {
         return {
             user_name: userName,
@@ -25,7 +25,7 @@ let utilityFunc = {
             id: id
         }
     }
-}
+}// SN- this is where task utilities ends
 
 
 export {utilityFunc}

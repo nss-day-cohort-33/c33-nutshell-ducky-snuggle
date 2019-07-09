@@ -1,23 +1,8 @@
-/*  TODO:
-****Create input field DOM component and slap it into the DOM
-**** Make sure there is task/date due and a button to save
-****Create DOM component to post CURRENT information onto the DOM 
-This DOM needs to populate an ID to the text input that has the ID number
-****Create Factory function to create task API object
--Create click event that grabs inputs, slaps them into dom, and create API component
--****Create DOM component that replaces text with input field
-that populates the text into the field
--Create event listener key press to update API component and refresh using the enter key (keyup)
--Creat event listener that, when checkbox is clicked, changes the complete boolean to false and deletes the task
-THIS NEEDS TO BE WRAPPED IN SET TIME OUT to allow for a click
-
-You need to add save and checkbox after append child?
-*/
-
-
 
 const taskComp = {
-    addTaskForm: function () {
+    // SN- All of this is your task stuff
+
+    addTaskForm: function () { //SN
         return `
         <h1> Task Manager <h1>
             <fieldset> 
@@ -32,7 +17,7 @@ const taskComp = {
     },
 
 
-    createTaskComp: function (taskArray) {
+    createTaskComp: function (taskArray) { //SN
         let taskName = `
         <h3> To Do: </h3>
             <input id= "taskCheckbox-${taskArray.id}" type="checkbox" name="completed" value="true"> 
@@ -42,7 +27,7 @@ const taskComp = {
         return taskName
     },
     
-    addTaskEditForm: function (taskArray) {
+    addTaskEditForm: function (taskArray) { //SN
         console.log("in function", taskArray)
         return `
         <h3> To Do: </h3>
@@ -52,15 +37,10 @@ const taskComp = {
         `
     },
 
+    //SN- Task components end here
+
 }
 
 export { taskComp };
 
-
-// taskEl.addEventListener("keyup", () => {
-//     if(event.keycode === 13){
-//         taskDiv = ""
-//         addTaskEditForm(taskEl.value)
-//     }
-// })
 

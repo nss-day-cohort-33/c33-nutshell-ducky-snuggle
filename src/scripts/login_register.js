@@ -1,6 +1,6 @@
 
 //this builds the dom for registration form//
-    function registerUserForm(){
+    function registerUserForm(){ 
     return `
     <h1>Registration</h1>
     <fieldset>

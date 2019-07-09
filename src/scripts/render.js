@@ -1,24 +1,18 @@
-// const RENDER = {
-//   insertComponent: function(infoArray) {
-//     for (let i = 0; i < infoArray.length; i++) {
-//       targetContainer.appendChild(---INSERT DOM BUILDING COMPONONENT FUNCTION ---(infoArray[i]))
-//     }
-//   }
-// };
 
-
+// SN- This was your imports. So messy
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
 import { taskComp } from "./component.js";
 import { getAndDisplayTasks } from "./main.js";
 import { EVENT } from "./event.js";
+// SN- this is where you imports stop
 
 
-let targetContainer = document.querySelector("#container");
+let targetContainer = document.querySelector("#container"); //SN- This is my target container
 
 const render = {
-    
+    // SN- This is my original render for tasks
     listEntries: function(taskArr) {
         let taskListContainer = document.querySelector("#taskListCont")
         taskArr.forEach( task => {
@@ -59,7 +53,7 @@ const render = {
         return indvTaskDiv
     },
 
-};
+}; // SN- This is where it ends
 
 
 

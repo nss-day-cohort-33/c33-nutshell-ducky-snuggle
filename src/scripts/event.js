@@ -48,8 +48,8 @@ const EVENT = {
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       });
     },
-
-  createTaskEditForm: function() {
+ // *****SN- this is where the task events start
+  createTaskEditForm: function() { //SN
     let container = document.querySelector("#taskListCont")
     container.addEventListener("click", () =>{
       if(event.target.id.startsWith("taskComp")){
@@ -83,29 +83,13 @@ const EVENT = {
     })
     },
 
-    completedCheckMark: function () {
-      let checkBox = document.querySelectorAll("input[type= checkbox]")
-      console.log(checkBox)
-    }
-    };
+    // **** SN- This Is the beginning of task checkbox
 
-
-  
-  export { EVENT };
-
-  
-  // ****This is the super long way but pretty cool******
-  // for (const value of Object.values(users)) {
-  //   console.log("object", value.user_name);
-  //   if(userName === value.user_name){
-  //     sessionStorage.setItem("id", value.id )
-
-  //   }
-  //   alert("Username does not exist. Please register!")
-  // }
-
-
-      //   if(event.target.id.includes("Date")){
+    // completedCheckMark: function () { //SN
+    //   let checkBox = document.querySelectorAll("input[type= checkbox]")
+    //   console.log(checkBox)
+    // } **** SN- this is the code to reference for the checkbox
+     //   if(event.target.id.includes("Date")){
       //     let target = event.target
       //     let text = target.innerText
       //     target.innerHTML = taskComp.addTaskEditForm("date", text)
@@ -121,18 +105,10 @@ const EVENT = {
       //         })
       //       }
       //     })
-      //   }
-      //   else if(event.target.id.includes("taskComp")){
-      //     let target = event.target
-      //     let text = target.innerText
-      //     target.innerHTML = taskComp.addTaskEditForm("text", text)
-      //     target.addEventListener("keypress", () => {
-      //       if (event.charCode === 13){
-      //         console.log("this was clicked")
-      //         let input = document.querySelector("#editInput")
-      //         let task = input.value
-      //         let idText = target.id.split("-")[1]
-      //         console.log(idText)
-      //       }
-      //   })
-      // }
+
+  };
+
+  
+  export { EVENT };
+
+  

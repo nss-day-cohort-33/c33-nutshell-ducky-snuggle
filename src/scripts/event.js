@@ -1,7 +1,7 @@
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
-import { newsFunc, masterNewsDiv } from "./newscomp.js";
+import { newsFunc, masterNewsDiv } from "./newsComp.js";
 import { userMESSAGE } from "./component.js"
 import { postMessage } from "./api/objet_manager.js"
 import { RENDER } from "./render.js"

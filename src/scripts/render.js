@@ -44,20 +44,21 @@ const render = {
             let userId = 1 // add this later!!!! sessionStorage.getItem("id")
             let fullObj = utilityFunc.createTaskObject(userId, taskName, date)
             API.saveToApi("task", fullObj)
+            .then( data => getAndDisplayTasks())
         })
         addTaskDiv.appendChild(saveBtn)
-        targetContainer.appendChild(addTaskDiv)
-        targetContainer.appendChild(taskListDiv)
+        mainTaskDiv.appendChild(addTaskDiv)
+        mainTaskDiv.appendChild(taskListDiv)
         getAndDisplayTasks()
     },
 
     insertTaskComponents: function(taskArray) {
         let indvTaskDiv = document.createElement("div")
+        indvTaskDiv.setAttribute("id", `indvTaskCont-${taskArray.id}`)
         indvTaskDiv.innerHTML = taskComp.createTaskComp(taskArray)
-        
-        // getAndDisplayTasks()
         return indvTaskDiv
-    }
+    },
+
 };
 
 

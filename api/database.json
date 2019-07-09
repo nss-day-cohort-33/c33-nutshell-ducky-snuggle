@@ -42,8 +42,8 @@
   "task": [
     {
       "user_id": 1,
-      "task": "Need to knock out the Nutshell project!!!",
-      "date_due": "2019-07-30",
+      "task": "Did I just do this?",
+      "date_due": "2019-01-01",
       "complete": false,
       "id": 1
     },
@@ -53,6 +53,41 @@
       "date_due": "2019-07-09",
       "complete": false,
       "id": 2
+    },
+    {
+      "user_id": 1,
+      "task": "Merge! Merge!",
+      "date_due": "2019-07-09",
+      "complete": false,
+      "id": 3
+    },
+    {
+      "user_id": 1,
+      "task": "Make your check marks",
+      "date_due": "2019-07-09",
+      "complete": false,
+      "id": 4
+    },
+    {
+      "user_id": 1,
+      "task": "Did this work?",
+      "date_due": "2019-07-17",
+      "complete": false,
+      "id": 5
+    },
+    {
+      "user_id": 1,
+      "task": "Mow the lawn",
+      "date_due": "2019-07-16",
+      "complete": false,
+      "id": 6
+    },
+    {
+      "user_id": 1,
+      "task": "Dag nam it",
+      "date_due": "2019-07-10",
+      "complete": false,
+      "id": 7
     }
   ],
   "event": [

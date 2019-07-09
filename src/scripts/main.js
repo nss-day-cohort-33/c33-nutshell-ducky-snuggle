@@ -19,6 +19,8 @@ function getAndDisplayTasks (database, userId) {
   .then( Data => render.listEntries(Data))
 }
 
+EVENT.completedCheckMark()
+
 // let addListContainer = document.querySelector("#addTask-container");
 // let taskListContainer = document.querySelector("#taskList-container")
 // addListContainer.innerHTML += taskComp.addTaskForm()

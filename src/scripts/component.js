@@ -34,19 +34,24 @@ const taskComp = {
 
     createTaskComp: function (taskArray) {
         let taskName = `
-        <h3> To Do: <h3>
+        <h3> To Do: </h3>
+            <input id= "taskCheckbox-${taskArray.id}" type="checkbox" name="completed" value="true"> 
             <p id="taskComp-${taskArray.id}"> ${taskArray.task} </p> 
             <p id="taskCompDate-${taskArray.id}"> ${taskArray.date_due} </p>
         `
         return taskName
     },
     
-    addTaskEditForm: function (text) {
-        console.log(text)
+    addTaskEditForm: function (taskArray) {
+        console.log("in function", taskArray)
         return `
-        <input type="text" name="newTaskName" value=" ${text} "/>
+        <h3> To Do: </h3>
+        <input id = "editTaskInputText" type="text" name="newTask" value="${taskArray.task}"/>
+        <input id = "editTaskInputDate" type="date" name="newTask" value="${taskArray.date_due}"/>
+        <input id = "editTaskInputId" type="hidden" name="newTask" value="${taskArray.id}"/>
         `
     },
+
 }
 
 export { taskComp };

@@ -25,14 +25,15 @@ const API = {
         .then(data => data.json())
     },
 
-    updateApi: function (database, info) {
-        return fetch(`http://localhost:3000/${database}`, {
+    updateApi: function (database, id, editedObject) {
+        return fetch(`http://localhost:3000/${database}/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(info)
+            body: JSON.stringify(editedObject)
         })
+        .then(res => res.json())
     },
     loginFromApi: function (username) {
         return fetch(`http://localhost:3000/user?user_name=${username}`)

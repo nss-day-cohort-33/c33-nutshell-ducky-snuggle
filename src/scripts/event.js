@@ -3,6 +3,9 @@ import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
 import { taskComp } from "./component.js";
+import { objectManager } from "./api/objet_manager";
+import { render } from "./render.js";
+import { getAndDisplayTasks } from "./main.js"
 
 let targetContainer = document.querySelector("#container");
 
@@ -45,20 +48,48 @@ const EVENT = {
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       });
     },
+
   createTaskEditForm: function() {
     let container = document.querySelector("#taskListCont")
-   
-    // console.log("an event listener was added")
     container.addEventListener("click", () =>{
       if(event.target.id.startsWith("taskComp")){
+        console.log("this was clicked")
+        let targetId = event.target.id.split("-")[1]
+        objectManager.getTaskFromApi("task", targetId )
+        .then( data => {
+          data.forEach( data => {
+          let editForm = taskComp.addTaskEditForm(data)
+          let divToEmpty = document.getElementById(`indvTaskCont-${targetId}`)
+          divToEmpty.innerHTML = ""
+          divToEmpty.innerHTML = editForm
+        })
+        })
+      }
+      if(event.target.id.includes("editTask")){
         let target = event.target
-        let text = target.innerText
-        target.innerHTML = taskComp.addTaskEditForm(text)
+        target.addEventListener("keypress", () => {
+          if (event.charCode === 13){
+            let date = document.querySelector("#editTaskInputDate").value
+            let userId = 1 //change with session storage
+            let id = document.querySelector("#editTaskInputId").value
+            let task = document.querySelector("#editTaskInputText").value
+            let newObj = utilityFunc.editedTaskObject(userId, task, date, id)
+            API.updateApi("task", id, newObj)
+          }
+          let userId = 1 //change to session storage
+          getAndDisplayTasks("task", userId) 
+        })
       }
     })
-  }
-};
-  
+    },
+
+    completedCheckMark: function () {
+      let checkBox = document.querySelectorAll("input[type= checkbox]")
+      console.log(checkBox)
+    }
+    };
+
+
   
   export { EVENT };
 
@@ -72,3 +103,36 @@ const EVENT = {
   //   }
   //   alert("Username does not exist. Please register!")
   // }
+
+
+      //   if(event.target.id.includes("Date")){
+      //     let target = event.target
+      //     let text = target.innerText
+      //     target.innerHTML = taskComp.addTaskEditForm("date", text)
+      //     target.addEventListener("keypress", () => {
+      //       if (event.charCode === 13){
+      //         console.log("this was clicked")
+      //         let dateInput = document.querySelector("#editInput")
+      //         let date = dateInput.value
+      //         let idDate = target.id.split("-")[1]
+      //         objectManager.getTaskFromApi("task", idDate )
+      //         .then(data => {
+      //           console.log(data)
+      //         })
+      //       }
+      //     })
+      //   }
+      //   else if(event.target.id.includes("taskComp")){
+      //     let target = event.target
+      //     let text = target.innerText
+      //     target.innerHTML = taskComp.addTaskEditForm("text", text)
+      //     target.addEventListener("keypress", () => {
+      //       if (event.charCode === 13){
+      //         console.log("this was clicked")
+      //         let input = document.querySelector("#editInput")
+      //         let task = input.value
+      //         let idText = target.id.split("-")[1]
+      //         console.log(idText)
+      //       }
+      //   })
+      // }

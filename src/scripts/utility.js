@@ -13,7 +13,16 @@ let utilityFunc = {
             user_id: userId,
             task: task,
             date_due: date,
+            complete: false
+        }
+    },
+    editedTaskObject: function (userId, task, date, id) {
+        return {
+            user_id: userId,
+            task: task,
+            date_due: date,
             complete: false,
+            id: id
         }
     }
 }

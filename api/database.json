@@ -43,30 +43,30 @@
       "id": 7
     }
   ],
-  "friend": [
+  "friends": [
     {
       "user": 1,
       "userId": 2,
       "id": 1
     }
   ],
-  "message": [
+  "messages": [
     {
-      "user_id": 1,
+      "userId": 1,
       "message": "this is the best social media app ever",
       "id": 1
     }
   ],
-  "task": [
+  "tasks": [
     {
-      "user_id": 1,
+      "userId": 1,
       "task": "Need to knock out the Nutshell project!!!",
       "id": 1
     }
   ],
-  "event": [
+  "events": [
     {
-      "user_id": 1,
+      "userId": 1,
       "event_name": "Going to get the nails did",
       "event_date": "2019-07-30",
       "event_location": "Nail Salon",
@@ -92,11 +92,27 @@
     },
     {
       "userId": 1,
+      "news_url": "change",
+      "news_title": "change",
+      "news_synopsis": "change",
+      "news_time": 1562643894062,
+      "id": 1
+    },
+    {
+      "userId": 2,
       "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
       "news_title": "This heat is poetic",
       "news_synopsis": "Florida man goes on hilarious rant about summer heat",
-      "news_time": 1562624106361,
-      "id": 1
+      "news_time": 1562613858765,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "news_url": "bp",
+      "news_title": "bp",
+      "news_synopsis": "bp",
+      "news_time": 1562646681945,
+      "id": 6
     }
   ]
 }

@@ -50,9 +50,48 @@ const EVENT = {
 
 };
 
+let newsEvents = {
+    editFormListener: function () {
+        document.querySelector("#update-news-save-btn").addEventListener("click", () => {
+            let newsTitleUp = document.querySelector("#news-title-edit").value
+            let newsSynUp = document.querySelector("#news-synopsis-edit").value
+            let newsUrlUp = document.querySelector("#news-url-edit").value
+            let newsIdUp = document.querySelector("#news-edit-id").value
+            let userId = sessionStorage.getItem("id")
+            let newsTimeUp = Date.now()
+            let updateNewsObj = utilityFunc.createNewsObj(newsTitleUp, newsSynUp, newsUrlUp, userId, newsTimeUp)
+            updateNewsObj.id = newsIdUp
+            console.log("updateObj", updateNewsObj)
+            API.updateApi("news", updateNewsObj)
+                .then(() => {
+                    newsFunc.newsFromApi(userId)
+                })
+        })
+    },
+    // editDeleteBtnListener: function (element) {
+    //     element.addEventListener("click", () => {
+    //         // console.log("delete", "you clicked here")
+    //         if (event.target.id.startsWith("delete")) {
+    //             let id = event.target.id.split("-")[1]
+    //             console.log(id)
+    //             API.deleteFromApi("news", id)
+    //                 .then(data => {
+    //                     newsFunc.newsFromApi(userId)
 
+    //                 })
+    //         }
+    //         if (event.target.id.startsWith("edit")) {
+    //             let id = event.target.id.split("edit")[1]
+    //             console.log("edit", id)
+    //             let editForm = newsFunc.editNewsForm(info)
+    //             console.log(editForm)
+    //             createEditForm(newsContainer.id, editForm)
+    //         }
+    //     })
+    // }
+}
 
-export { EVENT }
+export { EVENT, newsEvents }
   // ****This is the super long way but pretty cool******
   // for (const value of Object.values(users)) {
   //   console.log("object", value.user_name);

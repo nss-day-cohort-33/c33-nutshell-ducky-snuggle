@@ -159,8 +159,59 @@
   "tasks": [
     {
       "userId": 1,
-      "task": "Need to knock out the Nutshell project!!!",
+      "task": "Did I just do this?",
+      "date_due": "2019-01-01",
+      "complete": false,
       "id": 1
+    },
+    {
+      "userId": 1,
+      "task": "Take out the trasher!",
+      "date_due": "2021-09-03",
+      "complete": false,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "task": "Merge! Merge!",
+      "date_due": "2019-07-09",
+      "complete": false,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "task": "Make your check marks",
+      "date_due": "2019-07-09",
+      "complete": false,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "task": "Did this work? Or did it?",
+      "date_due": "2019-07-17",
+      "complete": false,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "task": "Mow the lawn",
+      "date_due": "2019-07-16",
+      "complete": false,
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "task": "Dag nam it",
+      "date_due": "2019-07-10",
+      "complete": false,
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "task": "Booper Moop",
+      "date_due": "2019-07-10",
+      "complete": false,
+      "id": 8
     }
   ],
   "events": [

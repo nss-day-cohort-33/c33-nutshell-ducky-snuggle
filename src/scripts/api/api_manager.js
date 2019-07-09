@@ -1,3 +1,4 @@
+
 const API = {
     saveToApi: function (database, info) {
         return fetch(`http://localhost:3000/${database}`, {
@@ -43,19 +44,28 @@ const API = {
         .then(data => data.json())
     },
 
-    updateApi: function (database, info) {
-        return fetch(`http://localhost:3000/${database}/${info.id}`, {
+    //SN - this is your put call it may be different
+
+    // updateApi: function (database, id, editedObject) { //SN
+    //     return fetch(`http://localhost:3000/${database}/${id}`, {
+
+    updateApi: function (database, info) { 
+        return fetch(`http://localhost:3000/${database}/${info.id}`, { 
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(info)
         })
+        .then(res => res.json())
     },
+
+
     loginFromApi: function (username) {
         return fetch(`http://localhost:3000/users?user_name=${username}`)
         .then(data => data.json())
     },
+   
 
     searchUsersApi: function (username, userId) {
         let url = `http://localhost:3000/users?q=${username}`
@@ -66,5 +76,7 @@ const API = {
         .then( data => data.json() )
     }
 };
+
+
 
 export {API}

@@ -1,3 +1,4 @@
+
 //this builds the dom for registration form//
 function registerUserForm (){
 return `

@@ -56,15 +56,13 @@ const eventComponent = {
         submitBtn.textContent = "Add new event"
 
         eventFormContainer.innerHTML = `
-            <fieldset>
+            <fieldset class="edit-event">
                 <label for="event-name">Name of event:</label>
                 <input type="text" name="event-name" id="event-name">
-            </fieldset>
-            <fieldset>
+                <br><br>
                 <label for="event-date">Date of event:</label>
                 <input type="date" name="event-date" id="event-date">
-            </fieldset>
-            <fieldset>
+                 <br><br>
                 <label for="event-location">Location of event:</label>
                 <input type="text" name="event-location" id="event-location">
             </fieldset>

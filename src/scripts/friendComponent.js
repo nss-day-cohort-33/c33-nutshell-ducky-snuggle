@@ -13,7 +13,6 @@ const myFriendsContainer = document.createElement("div")
 myFriendsContainer.setAttribute("id", "my-friends-container")
 const friendEventContainer = document.createElement("div")
 friendEventContainer.setAttribute("id", "friend-event-container")
-friendEventContainer.innerHTML = "<h1>My Friends' Events</h1>"
 friendContainer.appendChild(userListContainer)
 friendContainer.appendChild(myFriendsContainer)
 targetContainer.appendChild(friendEventContainer)
@@ -131,6 +130,8 @@ const friendComponent = {
                         // console.log(friend.user)
                         // console.log(friend.userId)
                         console.log(user.user_name)
+                        friendEventContainer.innerHTML = ""
+                        friendEventContainer.innerHTML = "<h1>My Friends' Events</h1>"
                         API.getDatesFromApi("events", friend.userId).then(RENDER.insertFriendEvent)
                     }
                 })

@@ -17,13 +17,24 @@ const API = {
             }
         })
     },
-
+    getAllFromApi: function (database, queryParams) {
+        let url = `http://localhost:3000/${database}`
+        if (queryParams) {
+          url += `?${queryParams}`
+        }
+        return fetch(url)
+        .then( data => data.json() )
+      },
     getFromApi: function (database, userId) {
         let url = `http://localhost:3000/${database}`
         if (userId) {
           url += `?id_ne=${userId}`
         }
         return fetch (url)
+        .then( data => data.json() )
+    },
+    getNewsFromApi: function (database, userId) {
+        return fetch(`http://localhost:3000/${database}?userId=${userId}&_sort=news_time&_order=desc`)
         .then( data => data.json() )
     },
     getDatesFromApi: function (database, userId) {
@@ -45,6 +56,10 @@ const API = {
             body: JSON.stringify(info)
         })
     },
+    loginFromApi: function (username) {
+        return fetch(`http://localhost:3000/users?user_name=${username}`)
+        .then(data => data.json())
+    },
 
     searchUsersApi: function (username, userId) {
         let url = `http://localhost:3000/users?q=${username}`
@@ -54,6 +69,6 @@ const API = {
         return fetch(url)
         .then( data => data.json() )
     }
-}
+};
 
 export {API}

@@ -13,20 +13,19 @@ const myFriendsContainer = document.createElement("div")
 myFriendsContainer.setAttribute("id", "my-friends-container")
 const friendEventContainer = document.createElement("div")
 friendEventContainer.setAttribute("id", "friend-event-container")
+friendEventContainer.innerHTML = "<h1>My Friends' Events</h1>"
 friendContainer.appendChild(userListContainer)
 friendContainer.appendChild(myFriendsContainer)
 targetContainer.appendChild(friendEventContainer)
+
+
 const searchBtn = document.createElement("button")
 searchBtn.textContent = "Search for friends"
 
-
-
 const friendComponent = {
     loadFriendBox: function () {
-
         targetContainer.appendChild(friendContainer)
         friendContainer.appendChild(searchBtn)
-
         searchBtn.addEventListener("click", () => {
             searchBtn.setAttribute("class", "hide")
             // eventListContainer.prepend(h1)
@@ -97,7 +96,8 @@ const friendComponent = {
             API.saveToApi("friends", newFriend)
             .then(data => data.json())
             .then(friends => {
-                console.log("friend added")
+                console.log(friends)
+                API.getDatesFromApi("events", friends.userId).then(RENDER.insertFriendEvent)
             })
         })
         deleteBtn.addEventListener("click", () => {
@@ -138,6 +138,8 @@ const friendComponent = {
         })
     },
     createFriendEvent: function (eventObj) {
+        const friendEventHeading = document.createElement("h2")
+        friendEventHeading.textContent = "My Friends' Events"
         const eventChildDiv = document.createElement("div")
         eventChildDiv.setAttribute("id", `delete-${eventObj.id}`)
         eventChildDiv.innerHTML = `
@@ -149,13 +151,9 @@ const friendComponent = {
                 <br>
             </section>
         `
-        if (new Date() > new Date(eventObj.event_date)) {
-            console.log("past")
-            friendEventContainer.appendChild(eventChildDiv)
-        } else {
-            friendEventContainer.appendChild(eventChildDiv)
 
-        }
+        friendEventContainer.appendChild(eventChildDiv)
+        // friendEventContainer.appendChild(friendEventHeading)
         return friendEventContainer
     }
 }

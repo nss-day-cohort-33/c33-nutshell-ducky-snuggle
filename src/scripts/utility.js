@@ -8,23 +8,36 @@ let utilityFunc = {
             password: password
         }
     },
-    createEventObj: function (userId, eventName, eventDate, eventLocation) {
+    createNewsObj: function (newsTitle, newsSynopsis, newsUrl, userId, timeStamp) {
         return {
-            userId: userId,
-            event_name: eventName,
-            event_date: eventDate,
-            event_location: eventLocation
+            userId: parseInt(userId),
+            news_url: newsUrl,
+            news_title: newsTitle,
+            news_synopsis: newsSynopsis,
+            news_time: timeStamp,
         }
     },
-    createFriendObj: function (userId, friendId) {
-        return {
-            user: userId,
-            userId: friendId
+            createMessageObj: function (userID, userMessage) {
+                return {
+                    userId: userID,
+                    message: userMessage
+                }
+            },
+            createEventObj: function (userId, eventName, eventDate, eventLocation) {
+                return {
+                    userId: userId,
+                    event_name: eventName,
+                    event_date: eventDate,
+                    event_location: eventLocation
+                }
+            },
+            createFriendObj: function (userId, friendId) {
+                return {
+                    user: userId,
+                    userId: friendId
+                }
+            }
         }
-    }
-}
+    
 
-
-
-
-export {utilityFunc}
+export { utilityFunc }

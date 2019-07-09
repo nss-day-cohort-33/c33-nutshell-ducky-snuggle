@@ -1,3 +1,11 @@
+Main Container
+#container {
+    width: 1400px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /*Nav-Bar*/
 #nav-container {
     width: 100%;
@@ -77,6 +85,7 @@ h1 {
     width: 525px;
     background: rgb(63, 143, 189);
     border-radius: 10px;
+    order: 3
 }
 
 #message-input {
@@ -96,8 +105,7 @@ label {
     background-color: cornsilk;
 
 
-    /*Other*/
-
+    /*Events*/
 }
 .hide {
     display: none;
@@ -107,6 +115,56 @@ label {
 }
 
 #event-container {
-    border: 1px solid black;
-    width: 525px;
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 475px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+}
+
+#event-list-container {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#past-event-div {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* News */
+
+#news-component {
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+}
+#news-id {
+    background: rgb(248, 248, 248);
+    width: 700px;
+    margin: 20px 10px 20px 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#containerId {
+
+    background: rgb(248, 248, 248);
+    width: 600px; 
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }

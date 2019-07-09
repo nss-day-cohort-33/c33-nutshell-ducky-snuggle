@@ -26,6 +26,7 @@ const RENDER = {
         friendComponent.getFriendEvents();
         targetContainer.appendChild(userMESSAGE.messageComponent());
         EVENT.submitMessage();
+        RENDER.insertMainTaskComponent() 
       },
     insertEventComponent: function(infoArray) {
       for (let i = 0; i < infoArray.length; i++) {

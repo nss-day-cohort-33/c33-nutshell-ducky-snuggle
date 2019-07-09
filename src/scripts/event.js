@@ -1,6 +1,7 @@
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
 import { registerUserForm } from "./login_register.js";
+import { newsFunc, masterNewsDiv } from "./newsComp.js";
 import { userMESSAGE } from "./component.js"
 import { postMessage } from "./api/objet_manager.js"
 import { RENDER } from "./render.js"
@@ -177,17 +178,72 @@ const EVENT = {
       return user.length + 1
     })
   }
+  let newsEvents = {
+    // event listener for the edit button to put to the API
+    editFormListener: function () {
+        document.querySelector("#update-news-save-btn").addEventListener("click", () => {
+            let newsTitleUp = document.querySelector("#news-title-edit").value
+            let newsSynUp = document.querySelector("#news-synopsis-edit").value
+            let newsUrlUp = document.querySelector("#news-url-edit").value
+            let newsIdUp = document.querySelector("#news-edit-id").value
+            let userId = sessionStorage.getItem("id")
+            let newsTimeUp = Date.now()
+            let updateNewsObj = utilityFunc.createNewsObj(newsTitleUp, newsSynUp, newsUrlUp, userId, newsTimeUp)
+            updateNewsObj.id = newsIdUp
+            console.log("updateObj", updateNewsObj)
+            API.updateApi("news", updateNewsObj)
+                .then(() => {
+                    masterNewsDiv.innerHTML=""
+                    newsFunc.newsFromApi(userId)
+                })
+            })
+        },
+        // event listener for the delete button
+        editDeleteBtnListener: function (element, info, newsContainer, userId) {
+            element.addEventListener("click", () => {
+                // console.log("delete", "you clicked here")
+                if (event.target.id.startsWith("delete")) {
+                    let id = event.target.id.split("-")[1]
+                    console.log(id)
+                    API.deleteFromApi("news", id)
+                    .then(data => {
+                        masterNewsDiv.innerHTML=""
+                        newsFunc.newsFromApi(userId)
+
+                    })
+                }
+                if (event.target.id.startsWith("edit")) {
+                    let id = event.target.id.split("edit")[1]
+                    console.log("edit", id)
+                    let editForm = newsFunc.editNewsForm(info)
+                    console.log(editForm)
+                newsFunc.createEditForm(newsContainer.id, editForm)
+            }
+        })
+    },
+    //this saves a new post to the database
+    saveNewsBtn: function () {
+        document.querySelector("#save-btn").addEventListener("click", () => {
+            console.log("Save Button", "it works")
+            let newsTitle = document.querySelector("#news-title").value;
+            let newsSynopsis = document.querySelector("#news-synopsis").value;
+            let newsUrl = document.querySelector("#news-url").value;
+            let userId = sessionStorage.getItem("id")
+            let timeStamp = Date.now()
+            let newsAPISave = utilityFunc.createNewsObj(newsTitle, newsSynopsis, newsUrl, userId, timeStamp)
+            if (newsTitle === "" || newsSynopsis === "" || newsUrl === "") {
+                alert("Please fill in blank space")
+            } else {
+                API.saveToApi("news", newsAPISave)
+                    .then(newsAPI => {
+                        masterNewsDiv.innerHTML=""
+                        newsFunc.newsFromApi(userId)
+                    })
+            }
+        })
+    }
+}
+
+export { EVENT, newsEvents }
 
 
-  export { EVENT };
- 
- 
-  // ****This is the super long way but pretty cool******
-  // for (const value of Object.values(users)) {
-  //   console.log("object", value.user_name);
-  //   if(userName === value.user_name){
-  //     sessionStorage.setItem("id", value.id )
-
-  //   }
-  //   alert("Username does not exist. Please register!")
-  // }

@@ -14,7 +14,7 @@ return `
 </div>
 </fieldset>
 `
-}
+}   
 //Builds intial Login Screen//
 function loginUserForm () {
 return `

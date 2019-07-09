@@ -33,6 +33,10 @@ const API = {
         return fetch (url)
         .then( data => data.json() )
     },
+    getNewsFromApi: function (database, userId) {
+        return fetch(`http://localhost:3000/${database}?userId=${userId}&_sort=news_time&_order=desc`)
+        .then( data => data.json() )
+    },
     getDatesFromApi: function (database, userId) {
         // ADD SORT BY DATE [&_sort=event_date&_order=asc]
         return fetch(`http://localhost:3000/${database}?userId=${userId}&_sort=event_date&_order=asc`)

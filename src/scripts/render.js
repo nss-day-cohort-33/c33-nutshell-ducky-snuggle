@@ -61,6 +61,7 @@ const RENDER = {
    // SN- This is my original render for tasks
    listEntries: function(taskArr) {
     let taskListContainer = document.querySelector("#taskListCont")
+    taskListContainer.innerHTML = ""
     taskArr.forEach( task => {
         taskListContainer.appendChild(RENDER.insertTaskComponents(task))
     })

@@ -166,7 +166,7 @@
     },
     {
       "userId": 1,
-      "task": "Take out the trasher!!",
+      "task": "Take out the trasher!",
       "date_due": "2021-09-03",
       "complete": false,
       "id": 2
@@ -187,7 +187,7 @@
     },
     {
       "userId": 1,
-      "task": "Did this work?",
+      "task": "Did this work? Or did it?",
       "date_due": "2019-07-17",
       "complete": false,
       "id": 5
@@ -208,7 +208,7 @@
     },
     {
       "userId": 1,
-      "task": "Booper",
+      "task": "Booper Moop",
       "date_due": "2019-07-10",
       "complete": false,
       "id": 8

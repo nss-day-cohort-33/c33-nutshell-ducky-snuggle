@@ -55,7 +55,7 @@ const API = {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(editedObject)
+            body: JSON.stringify(info)
         })
         .then(res => res.json())
     },

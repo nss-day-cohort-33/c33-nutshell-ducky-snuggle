@@ -87,7 +87,7 @@ const EVENT = {
       if(event.target.id.startsWith("taskComp")){
         console.log("this was clicked")
         let targetId = event.target.id.split("-")[1]
-        objectManager.getTaskFromApi("task", targetId )
+        objectManager.getTaskFromApi("tasks", targetId )
         .then( data => {
           data.forEach( data => {
           let editForm = taskComp.addTaskEditForm(data)
@@ -100,16 +100,17 @@ const EVENT = {
       if(event.target.id.includes("editTask")){
         let target = event.target
         target.addEventListener("keypress", () => {
+          // console.log(event.charCode)
           if (event.charCode === 13){
             let date = document.querySelector("#editTaskInputDate").value
             let userId = 1 //change with session storage
             let id = document.querySelector("#editTaskInputId").value
             let task = document.querySelector("#editTaskInputText").value
             let newObj = utilityFunc.editedTaskObject(userId, task, date, id)
+            console.log("newObj", newObj)
             API.updateApi("tasks", newObj)
+            .then( () => {getAndDisplayTasks("tasks", userId)})
           }
-          let userId = 1 //change to session storage
-          getAndDisplayTasks("tasks", userId) 
         })
       }
     })

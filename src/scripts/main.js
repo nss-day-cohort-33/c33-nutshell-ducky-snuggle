@@ -2,8 +2,8 @@
 
 import { loginUserForm } from "./login_register.js";
 import { EVENT } from "./event.js";
-// import {API} from "./api/api_manager.js"
 import {RENDER} from "./render.js"
+// import {API} from "./api/api_manager.js"
 // import { eventComponent } from "./eventComponent.js";
 // import { friendComponent } from "./friendComponent.js";
 
@@ -11,10 +11,10 @@ import {RENDER} from "./render.js"
 
 
 let targetContainer = document.querySelector("#container");
-targetContainer.innerHTML = loginUserForm();
 
 // Calls click/keypress event listeners for login
 if (sessionStorage.getItem("user_name")) {
+  targetContainer.innerHTML = ""
   RENDER.renderAllComponents()
 } else {
   targetContainer.innerHTML = loginUserForm();

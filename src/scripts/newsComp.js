@@ -102,11 +102,19 @@ let newsFunc = {
     //this is the edit form
     editNewsForm: function (news) {
         return `
-    <input id="news-title-edit" type="text" value="${news.news_title}">
-    <input id="news-edit-id" type="hidden" value="${news.id}">
-    <input id="news-synopsis-edit" type="text" value="${news.news_synopsis}">
-    <input id="news-url-edit" type="url" value="${news.news_url}"  >
-    <button id="update-news-save-btn">Save</button>
+        <fieldset class="edit-news">
+            <label for="news-title-edit">News Title:</label>
+            <input id="news-title-edit" type="text" value="${news.news_title}">
+            <br>
+            <input id="news-edit-id" type="hidden" value="${news.id}">
+            <label for="news-synopsis-edit">News Synopsis:</label>
+            <input id="news-synopsis-edit" type="text" value="${news.news_synopsis}">
+            <br>
+            <label for="news-url-edit">News URL:</label>
+            <input id="news-url-edit" type="url" value="${news.news_url}"  >
+            <br>
+            <button id="update-news-save-btn">Save Edit</button>
+        </fieldset>
     `
     },
     newsFromApi: function (userID) {

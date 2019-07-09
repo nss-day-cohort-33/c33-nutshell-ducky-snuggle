@@ -15,62 +15,58 @@ const pastEventDiv = document.createElement("div");
 pastEventDiv.setAttribute("id", "past-event-div");
 eventContainer.appendChild(pastEventDiv);
 
+// const showBtn = document.createElement("button")
+// showBtn.textContent = "Show my events"
+const addBtn = document.createElement("button")
+addBtn.textContent = "+"
 
 const eventComponent = {
-  createDynamicHeading: function() {
-    const myEventsHeading = document.createElement("h1");
-    myEventsHeading.textContent = "My Events";
-    eventListContainer.prepend(myEventsHeading);
-  },
-  loadEventBox: function() {
-    targetContainer.appendChild(eventContainer);
-    // const showBtn = document.createElement("button");
-    // showBtn.textContent = "Show my events";
-    const addBtn = document.createElement("button");
-    addBtn.textContent = "+";
+    createDynamicHeading: function () {
+        const myEventsHeading = document.createElement("h2")
+        myEventsHeading.textContent = "My Events"
+        eventListContainer.prepend(myEventsHeading)
+    },
+    loadEventBox: function () {
 
-    // eventContainer.prepend(showBtn);
-    eventContainer.prepend(addBtn);
 
-    addBtn.addEventListener("click", () => {
-      // eventFormContainer.innerHTML = ""
-      this.createEventForm();
-      addBtn.setAttribute("class", "hide");
-    });
-    eventListContainer.innerHTML = "";
-    pastEventDiv.innerHTML = "";
-    this.createDynamicHeading();
-    API.getDatesFromApi("events", userId).then(RENDER.insertEventComponent);
+        targetContainer.appendChild(eventContainer)
 
-    // showBtn.addEventListener("click", () => {
-    //     // eventListContainer.prepend(h1)
-    //     eventListContainer.innerHTML = ""
-    //     pastEventDiv.innerHTML = ""
-    //     this.createDynamicHeading()
-    //     API.getDatesFromApi("events", userId).then(RENDER.insertEventComponent)
-    // })
-  },
-  createEventForm: function() {
-    const eventFormContainer = document.createElement("div");
-    eventFormContainer.setAttribute("id", "event-form-container");
-    eventContainer.prepend(eventFormContainer);
-    const submitBtn = document.createElement("button");
-    submitBtn.textContent = "Add new event";
+        // eventContainer.prepend(showBtn)
+        eventContainer.prepend(addBtn)
 
-    eventFormContainer.innerHTML = `
-            <fieldset>
+        addBtn.addEventListener("click", () => {
+            // eventFormContainer.innerHTML = ""
+            this.createEventForm()
+            addBtn.setAttribute("class", "hide")
+        })
+
+        // showBtn.addEventListener("click", () => {
+            // eventListContainer.prepend(h1)
+            eventListContainer.innerHTML = ""
+            pastEventDiv.innerHTML = ""
+            this.createDynamicHeading()
+            API.getDatesFromApi("events", userId).then(RENDER.insertEventComponent)
+        // })
+    },
+    createEventForm: function () {
+        const eventFormContainer = document.createElement("div")
+        eventFormContainer.setAttribute("id", "event-form-container")
+        eventContainer.prepend(eventFormContainer)
+        const submitBtn = document.createElement("button")
+        submitBtn.textContent = "Add new event"
+
+        eventFormContainer.innerHTML = `
+            <fieldset class="edit-event">
                 <label for="event-name">Name of event:</label>
                 <input type="text" name="event-name" id="event-name">
-            </fieldset>
-            <fieldset>
+                <br><br>
                 <label for="event-date">Date of event:</label>
                 <input type="date" name="event-date" id="event-date">
-            </fieldset>
-            <fieldset>
+                 <br><br>
                 <label for="event-location">Location of event:</label>
                 <input type="text" name="event-location" id="event-location">
             </fieldset>
-            `;
+            `
     eventFormContainer.appendChild(submitBtn);
 
     submitBtn.addEventListener("click", event => {
@@ -109,9 +105,7 @@ const eventComponent = {
     // console.log(new Date().getUTCDay())
     // [: new Date() < new Date(eventObj.event_date) ? "next-event":]
     eventChildDiv.innerHTML = `
-            <section class="${
-              new Date() > new Date(eventObj.event_date) ? "past-event" : ""
-            }">
+            <section class="${new Date() > new Date(eventObj.event_date) ? "past-event" : ""}">
                 <h3>${eventObj.event_name}</h3>
                 <strong>Date:</strong> ${eventObj.event_date}
                 <br>

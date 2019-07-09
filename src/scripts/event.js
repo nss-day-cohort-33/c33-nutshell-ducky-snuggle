@@ -8,6 +8,7 @@ import { userMESSAGE } from "./component.js"
 import { postMessage } from "./api/objet_manager.js"
 import { RENDER } from "./render.js"
 
+
 let targetContainer = document.querySelector("#container");
 
 const EVENT = {
@@ -77,7 +78,34 @@ const EVENT = {
         let password = document.querySelector("#password").value;
         let userObj = utilityFunc.createUserObj(userName, email, password);
         console.log(userObj);
-        API.saveToApi("users", userObj);
+        API.searchUsersApi(userName).then(user => {
+            if (user.length === 0){
+              API.searchUsersApi(email).then(email => {
+                if (email.length === 0) {
+                  console.log(userObj);
+                  API.saveToApi("users", userObj)
+                  .then(() => {
+                    sessionStorage.setItem("user_name", userName)
+                    let userID = sessionStorage.getItem("id")
+                    sessionStorage.setItem("id", userID)
+                    targetContainer.innerHTML = ""
+                    console.log("logged in")
+                  })
+                // loadEventBox()
+                } else if (email === user[0].email) {
+                    alert(`There's an existing account registered under ${email}. Please try again.`)
+                }
+              })
+            } else if (!userName || !email || !password) {
+                alert("Please complete all fields.")
+            } else if(userName === user[0].user_name && email === user[0].email) {
+                alert("You are already registered. Please login.")
+            } else if (user[0].email === email) {
+                alert(`There's an existing account registered under ${email}. Please try again.`)
+            } else if (userName === user[0].user_name) {
+                alert(`${userName} is already taken. Please try again.`)
+            }
+          });
         // targetContainer.innerHTML = ""; --Will clear container upon submit--
       },
  // *****SN- this is where the task events start
@@ -139,7 +167,7 @@ const EVENT = {
       //       }
       //     })
 
-  
+
 
   // SN- This was for friends, they are still doing stuff THIS IS THE BOTTOM
         // API.searchUsersApi(userName).then(user => {

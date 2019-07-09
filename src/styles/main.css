@@ -218,7 +218,7 @@ label {
 }
 #event-list-container div:first-of-type {
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 15px; 
     background-color: cornsilk;
 
 
@@ -229,6 +229,14 @@ label {
 }
 .past-event {
     color: lightgray;
+}
+
+.addBtn {
+    border-radius: 100%;
+    border: none;
+    font-size: 20px;
+    margin: 15px 5px 5px 400px;
+
 }
 
 #event-container {

@@ -112,6 +112,8 @@ function navComponent() {
   let userName = sessionStorage.getItem("user_name");
   let usernameNav = document.createElement("div");
   let logoutNav = document.createElement("div");
+  usernameNav.setAttribute("class", "user-welcome");
+  logoutNav.setAttribute("class", "logout-link")
   usernameNav.textContent = `Welcome, ${userName}`;
   logoutNav.textContent = "Logout";
   navBar.appendChild(usernameNav);

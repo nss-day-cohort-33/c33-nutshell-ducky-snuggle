@@ -1,10 +1,13 @@
 import { newsEvents } from "./event.js"
+import { API } from "./api/api_manager.js"
 
 
 let targetContainer = document.querySelector("#container");
 
 let userId = sessionStorage.getItem("id")
 
+let masterNewsDiv = document.createElement("div")
+masterNewsDiv.setAttribute("id", "news-component")
 
 let newsFunc = {
     // //function to generate new divs to the dom
@@ -17,7 +20,6 @@ let newsFunc = {
         let newsLabelUrl = document.createElement("label")
         let newsInputUrl = document.createElement("input")
         let newsSaveBtn = document.createElement("button")
-
 
         newsDiv.setAttribute("id", "news-id")
 
@@ -58,7 +60,7 @@ let newsFunc = {
         return newsDiv
     },
     //this function generate new divs to the dom to target the edit/delete button and holds the edit/delete button
-     newToDomComp: function (info) {
+    newToDomComp: function (info) {
         let newsAllDiv = document.createElement("div")
         let newsContainer = document.createElement("div")
         let newsDeleteBtn = document.createElement("button")
@@ -75,7 +77,7 @@ let newsFunc = {
 
         var moment = require("moment");
         let date = moment(info.news_time).format("MMM Do YYYY");
-        console.log(date)
+        // console.log(date)
 
         newsContainer.innerHTML +=
             `
@@ -85,16 +87,17 @@ let newsFunc = {
             <p><em>Date of Entry: ${date}</em></p>
         `
         newsAllDiv.appendChild(newsContainer)
-        targetContainer.appendChild(newsAllDiv)
         newsContainer.appendChild(newsDeleteBtn)
         newsContainer.appendChild(newsEditBtn)
 
+        masterNewsDiv.appendChild(newsAllDiv)
         newsEvents.editDeleteBtnListener(newsAllDiv, info, newsContainer, userId)
+        // return newsAllDiv
     },
     //creates the edit form when the event listener hits
     createEditForm: (where, editform) => {
         document.querySelector(`#${where}`).innerHTML = editform
-                newsEvents.editFormListener()
+        newsEvents.editFormListener()
     },
     //this is the edit form
     editNewsForm: function (news) {
@@ -105,7 +108,33 @@ let newsFunc = {
     <input id="news-url-edit" type="url" value="${news.news_url}"  >
     <button id="update-news-save-btn">Save</button>
     `
-    }
+    },
+    newsFromApi: function (userID) {
+        // console.log("userId", userID)
+        API.getNewsFromApi("news", userID)
+        .then(info => {
+            // console.log("this is info", info)
+            targetContainer.appendChild(masterNewsDiv)
+            document.querySelector("#news-component").innerHTML = ""
+            masterNewsDiv.appendChild(newsFunc.newsCreateComponent())
+                newsEvents.saveNewsBtn()
+                info.forEach(info => {
+                    newsFunc.newToDomComp(info)
+                })
+            })
+      }
+    // domElements: function () {
+    //     API.getFromApi("news", userID)
+    //         .then(info => {
+    //             // console.log("this is info", info)
+    //             // targetContainer.innerHTML = ""
+    //             allNewsDiv.appendChild(newsFunc.newsCreateComponent())
+    //             newsEvents.saveNewsBtn()
+    //             info.forEach(info => {
+    //                 newsFunc.newToDomComp(info)
+    //             })
+    //         })
+    // }
 }
 
-export { newsFunc }
+export { newsFunc, userId, masterNewsDiv }

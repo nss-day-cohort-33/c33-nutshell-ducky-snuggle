@@ -91,14 +91,6 @@
       "id": 5
     },
     {
-      "userId": 1,
-      "news_url": "change",
-      "news_title": "change",
-      "news_synopsis": "change",
-      "news_time": 1562643894062,
-      "id": 1
-    },
-    {
       "userId": 2,
       "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
       "news_title": "This heat is poetic",
@@ -108,10 +100,10 @@
     },
     {
       "userId": 1,
-      "news_url": "bp",
-      "news_title": "bp",
-      "news_synopsis": "bp",
-      "news_time": 1562646681945,
+      "news_url": "http://www.fox13news.com/trending/-this-heat-is-poetic-florida-man-goes-on-hilarious-rant-about-summer-heat",
+      "news_title": "This heat is poetic",
+      "news_synopsis": "Florida man goes on hilarious rant about summer heat",
+      "news_time": 1562682736066,
       "id": 6
     }
   ]

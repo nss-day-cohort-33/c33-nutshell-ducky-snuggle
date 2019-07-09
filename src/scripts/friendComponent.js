@@ -16,17 +16,20 @@ friendEventContainer.setAttribute("id", "friend-event-container")
 friendContainer.appendChild(userListContainer)
 friendContainer.appendChild(myFriendsContainer)
 targetContainer.appendChild(friendEventContainer)
+const myFriendsH = document.createElement("h1")
+myFriendsH.textContent = "My Friends"
+myFriendsContainer.appendChild(myFriendsH)
 
 
-const searchBtn = document.createElement("button")
-searchBtn.textContent = "Search for friends"
+// const searchBtn = document.createElement("button")
+// searchBtn.textContent = "Search for friends"
 
 const friendComponent = {
     loadFriendBox: function () {
         targetContainer.appendChild(friendContainer)
-        friendContainer.appendChild(searchBtn)
-        searchBtn.addEventListener("click", () => {
-            searchBtn.setAttribute("class", "hide")
+        // friendContainer.appendChild(searchBtn)
+        // searchBtn.addEventListener("click", () => {
+        //     searchBtn.setAttribute("class", "hide")
             // eventListContainer.prepend(h1)
             userListContainer.innerHTML = ""
             // this.createDynamicHeading()
@@ -54,7 +57,7 @@ const friendComponent = {
                             RENDER.insertFriendComponent(users)
                         }
                     })
-                })
+                // })
             })
         })
     },
@@ -141,10 +144,11 @@ const friendComponent = {
     createFriendEvent: function (eventObj) {
         const friendEventHeading = document.createElement("h2")
         friendEventHeading.textContent = "My Friends' Events"
+        friendEventHeading.setAttribute("class", "friend-event-header")
         const eventChildDiv = document.createElement("div")
         eventChildDiv.setAttribute("id", `delete-${eventObj.id}`)
         eventChildDiv.innerHTML = `
-            <section class="${new Date() > new Date(eventObj.event_date) ? "past-event" : ""}">
+            <section id="friend-events-style" class="${new Date() > new Date(eventObj.event_date) ? "past-event" : ""}">
                 <h3>${eventObj.event_name}</h3>
                 <strong>Date:</strong> ${eventObj.event_date}
                 <br>

@@ -90,6 +90,7 @@ const EVENT = {
                     sessionStorage.setItem("id", userID)
                     targetContainer.innerHTML = ""
                     console.log("logged in")
+                    RENDER.renderAllComponents()
                   })
                 // loadEventBox()
                 } else if (email === user[0].email) {

@@ -15,10 +15,6 @@ const pastEventDiv = document.createElement("div");
 pastEventDiv.setAttribute("id", "past-event-div");
 eventContainer.appendChild(pastEventDiv);
 
-// const showBtn = document.createElement("button");
-// showBtn.textContent = "Show my events";
-const addBtn = document.createElement("button");
-addBtn.textContent = "+";
 
 const eventComponent = {
   createDynamicHeading: function() {
@@ -28,6 +24,10 @@ const eventComponent = {
   },
   loadEventBox: function() {
     targetContainer.appendChild(eventContainer);
+    // const showBtn = document.createElement("button");
+    // showBtn.textContent = "Show my events";
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "+";
 
     // eventContainer.prepend(showBtn);
     eventContainer.prepend(addBtn);

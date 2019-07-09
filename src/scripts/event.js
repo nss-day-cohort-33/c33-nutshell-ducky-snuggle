@@ -111,10 +111,13 @@ const EVENT = {
               postMessage();
               API.getAllFromApi("messages")
               .then(data => {
-                let navBar = document.querySelector("#nav-container")
-                navBar.innerHTML = ""
-                targetContainer.innerHTML = "";
-                RENDER.renderAllComponents();
+                let chatBox = document.querySelector("#chat-box")
+                // let navBar = document.querySelector("#nav-container")
+                // navBar.innerHTML = ""
+                // targetContainer.innerHTML = "";
+                // RENDER.renderAllComponents();
+                chatBox.innerHTML = ""
+                userMESSAGE.chatBoxComponent()
               })
             }
           })

@@ -111,6 +111,8 @@ const EVENT = {
               postMessage();
               API.getAllFromApi("messages")
               .then(data => {
+                let navBar = document.querySelector("#nav-container")
+                navBar.innerHTML = ""
                 targetContainer.innerHTML = "";
                 RENDER.renderAllComponents();
               })

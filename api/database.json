@@ -162,6 +162,20 @@
       "event_date": "2019-07-14",
       "event_location": "somewhere",
       "id": 24
+    },
+    {
+      "userId": 1,
+      "event_name": "Test",
+      "event_date": "2019-07-24",
+      "event_location": "School",
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "event_name": "Test",
+      "event_date": "2019-07-31",
+      "event_location": "School",
+      "id": 26
     }
   ],
   "news": [

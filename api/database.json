@@ -29,6 +29,12 @@
       "email": "dad",
       "password": "dad",
       "id": 5
+    },
+    {
+      "user_name": "green",
+      "email": "blue@aol.com",
+      "password": "purple",
+      "id": 6
     }
   ],
   "friends": [
@@ -40,42 +46,17 @@
     {
       "user": 1,
       "userId": 4,
-      "id": 3
-    },
-    {
-      "user": 1,
-      "userId": 3,
-      "id": 4
-    },
-    {
-      "user": 2,
-      "userId": 4,
-      "id": 3
-    },
-    {
-      "user": 2,
-      "userId": 3,
-      "id": 4
-    },
-    {
-      "user": 1,
-      "userId": 2,
-      "id": 5
-    },
-    {
-      "user": 1,
-      "userId": 2,
-      "id": 6
-    },
-    {
-      "user": 1,
-      "userId": 2,
       "id": 7
     },
     {
       "user": 1,
-      "userId": 2,
+      "userId": 5,
       "id": 8
+    },
+    {
+      "user": 1,
+      "userId": 2,
+      "id": 9
     }
   ],
   "messages": [
@@ -117,37 +98,44 @@
     {
       "userId": 2,
       "event_name": "U2 E1",
-      "event_date": "2019-07-04",
+      "event_date": "2019-08-04",
       "event_location": "here",
       "id": 20
     },
     {
       "userId": 2,
       "event_name": "U2 E2",
-      "event_date": "2019-07-05",
+      "event_date": "2019-08-05",
       "event_location": "here",
       "id": 21
     },
     {
       "userId": 2,
       "event_name": "U2 E3",
-      "event_date": "2019-07-05",
+      "event_date": "2019-08-05",
       "event_location": "here",
       "id": 22
     },
     {
       "userId": 3,
-      "event_name": "brunch",
+      "event_name": "U3",
       "event_date": "2019-07-14",
       "event_location": "somewhere",
       "id": 24
     },
     {
-      "userId": 1,
-      "event_name": "new event",
+      "userId": 3,
+      "event_name": "U3",
       "event_date": "2019-07-11",
       "event_location": "here",
       "id": 25
+    },
+    {
+      "userId": 1,
+      "event_name": "fdaf",
+      "event_date": "2019-07-10",
+      "event_location": "here",
+      "id": 26
     }
   ],
   "news": [

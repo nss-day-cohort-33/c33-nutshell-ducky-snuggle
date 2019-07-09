@@ -11,7 +11,12 @@ const RENDER = {
     },
     insertFriendComponent: function(infoArray) {
         for (let i = 0; i < infoArray.length; i++) {
-            targetContainer.appendChild(friendComponent.createFriendList(infoArray[i]));
+            targetContainer.appendChild(friendComponent.populateUserList(infoArray[i]));
+          }
+    },
+    insertFriendEvent: function(infoArray) {
+        for (let i = 0; i < infoArray.length; i++) {
+            targetContainer.appendChild(friendComponent.createFriendEvent(infoArray[i]));
           }
     },
     insertEventForm: function () {
@@ -25,6 +30,7 @@ const RENDER = {
         .then(this.insertEventComponent)
     },
     getAndDisplayFriends: function () {
+        debugger;
         // targetContainer.innerHTML = ""
         document.querySelector("#friend-list-container").innerHTML = ""
         // document.querySelector("#past-event-div").innerHTML = ""

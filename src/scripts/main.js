@@ -12,13 +12,13 @@ console.log(
 
 
 let targetContainer = document.querySelector("#container");
-// targetContainer.innerHTML = loginUserForm();
+targetContainer.innerHTML = loginUserForm();
 
-// // Calls click/keypress event listeners for login
-// EVENT.loginUserClick();
-// EVENT.loginUserKeyup();
+// Calls click/keypress event listeners for login
+EVENT.loginUserClick();
+EVENT.loginUserKeyup();
 
-// EVENT.registerPageLink();
+EVENT.registerPageLink();
 
 
 
@@ -26,6 +26,6 @@ let userID = sessionStorage.getItem("id")
 console.log(userID)
 
 // eventComponent.loadEventBox()
-
+// friendComponent.loadFriendBox()
 
 export {targetContainer}

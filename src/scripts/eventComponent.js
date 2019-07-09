@@ -14,6 +14,10 @@ eventContainer.appendChild(eventListContainer)
 const pastEventDiv = document.createElement("div")
 pastEventDiv.setAttribute("id", "past-event-div")
 eventContainer.appendChild(pastEventDiv)
+const showBtn = document.createElement("button")
+        showBtn.textContent = "Show my events"
+        const addBtn = document.createElement("button")
+        addBtn.textContent = "+"
 
 const eventComponent = {
     createDynamicHeading: function () {
@@ -22,10 +26,7 @@ const eventComponent = {
         eventListContainer.prepend(myEventsHeading)
     },
     loadEventBox: function () {
-        const showBtn = document.createElement("button")
-        showBtn.textContent = "Show my events"
-        const addBtn = document.createElement("button")
-        addBtn.textContent = "+"
+
 
         targetContainer.appendChild(eventContainer)
 
@@ -172,6 +173,6 @@ const eventComponent = {
 }
 
 // THIS IS TEMPORARY TO BYPASS LOGIN. DONT FORGET TO TAKE THIS OUT
-eventComponent.loadEventBox()
+// eventComponent.loadEventBox()
 
 export {eventComponent}

@@ -7,21 +7,30 @@ const userId = parseInt(sessionStorage.getItem("id"))
 
 const friendContainer = document.createElement("div")
 friendContainer.setAttribute("id", "friend-container")
-const friendListContainer = document.createElement("div")
-friendListContainer.setAttribute("id", "friend-list-container")
-friendContainer.appendChild(friendListContainer)
+const userListContainer = document.createElement("div")
+userListContainer.setAttribute("id", "friend-list-container")
+const myFriendsContainer = document.createElement("div")
+myFriendsContainer.setAttribute("id", "my-friends-container")
+const friendEventContainer = document.createElement("div")
+friendEventContainer.setAttribute("id", "friend-event-container")
+friendContainer.appendChild(userListContainer)
+friendContainer.appendChild(myFriendsContainer)
+targetContainer.appendChild(friendEventContainer)
+const searchBtn = document.createElement("button")
+searchBtn.textContent = "Search for friends"
+
+
 
 const friendComponent = {
     loadFriendBox: function () {
-        const searchBtn = document.createElement("button")
-        searchBtn.textContent = "Search for friends"
+
         targetContainer.appendChild(friendContainer)
         friendContainer.appendChild(searchBtn)
 
         searchBtn.addEventListener("click", () => {
             searchBtn.setAttribute("class", "hide")
             // eventListContainer.prepend(h1)
-            friendListContainer.innerHTML = ""
+            userListContainer.innerHTML = ""
             // this.createDynamicHeading()
             const friendSearchContainer = document.createElement("div")
             friendSearchContainer.setAttribute("id", "friend-search")
@@ -43,7 +52,7 @@ const friendComponent = {
                         console.log(users)
                         if(user.user_name.includes(friendInput.value)) {
                             console.log("true")
-                            friendListContainer.innerHTML = ""
+                            userListContainer.innerHTML = ""
                             RENDER.insertFriendComponent(users)
                         }
                     })
@@ -51,21 +60,40 @@ const friendComponent = {
             })
         })
     },
-    createFriendList: function (friendObj) {
+    populateUserList: function (friendObj) {
         const friendDiv = document.createElement("div")
         friendDiv.setAttribute("id", `friend-${friendObj.id}`)
         const deleteBtn = document.createElement("button")
         deleteBtn.textContent = "delete"
-        deleteBtn.setAttribute("class", "hide")
+        // deleteBtn.setAttribute("class", "hide")
         const addBtn = document.createElement("button")
         addBtn.textContent = "add"
         friendDiv.innerHTML = `
             <p>${friendObj.user_name}</p>
         `
+        // API.getFriendsFromApi()
+        // .then(users => {
+        //     users.forEach(user => {
+        //         user.friends.forEach(friend => {
+        //             console.log("hello", friend)
+        //             if (friend.user === userId) {
+        //                 friendDiv.appendChild(addBtn)
+        //                 console.log(friend.user)
+        //                 // console.log(friend.userId)
+        //                 console.log(user.user_name)
+        //             } else if (friend.user !== userId) {
+        //                 // friendDiv.appendChild(deleteBtn)
+        //                 // console.log(friend.user)
+        //             }
+        //         })
+        //     })
+        // })
         addBtn.addEventListener("click", () => {
             addBtn.setAttribute("class", "hide")
             deleteBtn.removeAttribute("class")
             const newFriend = utilityFunc.createFriendObj(userId, friendObj.id)
+            // friendDiv.innerHTML = ""
+            myFriendsContainer.appendChild(friendDiv)
             API.saveToApi("friends", newFriend)
             .then(data => data.json())
             .then(friends => {
@@ -75,20 +103,66 @@ const friendComponent = {
         deleteBtn.addEventListener("click", () => {
             deleteBtn.setAttribute("class", "hide")
             addBtn.removeAttribute("class")
-            API.deleteFromApi("friends", friendObj.id)
+            // console.log(taco)
+            // this.removeFromFriendsList(friendObj)
+        })
+
+        friendDiv.appendChild(addBtn)
+        userListContainer.appendChild(friendDiv)
+
+        return friendContainer
+    },
+    removeFromFriendsList: function (friendObj) {
+        console.log(friendObj)
+        API.getFromApi("friends").then(
+        API.deleteFromApi("friends", friendObj.id)
             .then(data => {
                 console.log("friend deleted")
             })
+        )
+        return userListContainer
+    },
+    getFriendEvents: function () {
+        API.getFriendsFromApi()
+        .then(users => {
+            users.forEach(user => {
+                user.friends.forEach(friend => {
+                    if (friend.user === userId) {
+                        // console.log(friend.user)
+                        // console.log(friend.userId)
+                        console.log(user.user_name)
+                        API.getDatesFromApi("events", friend.userId).then(RENDER.insertFriendEvent)
+                    }
+                })
+            })
         })
-        friendDiv.appendChild(deleteBtn)
-        friendDiv.appendChild(addBtn)
-        friendListContainer.appendChild(friendDiv)
-        return friendContainer
+    },
+    createFriendEvent: function (eventObj) {
+        const eventChildDiv = document.createElement("div")
+        eventChildDiv.setAttribute("id", `delete-${eventObj.id}`)
+        eventChildDiv.innerHTML = `
+            <section class="${new Date() > new Date(eventObj.event_date) ? "past-event" : ""}">
+                <h3>${eventObj.event_name}</h3>
+                <strong>Date:</strong> ${eventObj.event_date}
+                <br>
+                <strong>Location:</strong> ${eventObj.event_location}
+                <br>
+            </section>
+        `
+        if (new Date() > new Date(eventObj.event_date)) {
+            console.log("past")
+            friendEventContainer.appendChild(eventChildDiv)
+        } else {
+            friendEventContainer.appendChild(eventChildDiv)
+
+        }
+        return friendEventContainer
     }
 }
 
 
 
-friendComponent.loadFriendBox()
+
+
 
 export {friendComponent}

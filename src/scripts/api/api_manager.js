@@ -31,6 +31,10 @@ const API = {
         return fetch(`http://localhost:3000/${database}?userId=${userId}&_sort=event_date&_order=asc`)
         .then(data => data.json())
     },
+    getFriendsFromApi: function () {
+        return fetch("http://localhost:3000/users?_embed=friends")
+        .then(data => data.json())
+    },
 
     updateApi: function (database, info) {
         return fetch(`http://localhost:3000/${database}/${info.id}`, {

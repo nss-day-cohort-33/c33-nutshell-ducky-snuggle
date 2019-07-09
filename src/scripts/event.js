@@ -1,9 +1,10 @@
 //event listener for the registration submit button//
 import { API } from "./api/api_manager.js";
 import { utilityFunc } from "./utility.js";
-import { registerUserForm } from "./login_register.js";
+import { registerUserForm } from "./login_register.js"
 import { RENDER } from "./render.js"
-import { eventComponent } from "./eventComponent.js";
+import { eventComponent } from "./eventComponent.js"
+import {friendComponent} from "./friendComponent.js"
 
 let targetContainer = document.querySelector("#container");
 
@@ -34,6 +35,8 @@ const EVENT = {
           // API.getFromApi("event", userID).then(RENDER.insertComponent)
           // createEventForm()
           eventComponent.loadEventBox()
+          friendComponent.loadFriendBox()
+          friendComponent.getFriendEvents()
           }
         });
       },
@@ -74,7 +77,8 @@ const EVENT = {
                   console.log("logged in")
                 })
               // loadEventBox()
-              } else if (email === user[0].email) {
+              } else if (email === user.email) {
+                console.log(user.email)
                   alert(`There's an existing account registered under ${email}. Please try again.`)
               }
             })

@@ -54,106 +54,6 @@
       "user": 1,
       "userId": 2,
       "id": 1
-    },
-    {
-      "user": 1,
-      "userId": 3,
-      "id": 2
-    },
-    {
-      "user": 1,
-      "userId": 5,
-      "id": 3
-    },
-    {
-      "user": 1,
-      "userId": 6,
-      "id": 4
-    },
-    {
-      "user": 1,
-      "userId": 2,
-      "id": 5
-    },
-    {
-      "user": 1,
-      "userId": 4,
-      "id": 6
-    },
-    {
-      "user": 1,
-      "userId": 6,
-      "id": 7
-    },
-    {
-      "user": null,
-      "userId": 1,
-      "id": 8
-    },
-    {
-      "user": null,
-      "userId": 1,
-      "id": 9
-    },
-    {
-      "user": 1,
-      "userId": 7,
-      "id": 10
-    },
-    {
-      "user": 1,
-      "userId": 2,
-      "id": 11
-    },
-    {
-      "user": 1,
-      "userId": 3,
-      "id": 12
-    },
-    {
-      "user": 1,
-      "userId": 4,
-      "id": 13
-    },
-    {
-      "user": 1,
-      "userId": 5,
-      "id": 14
-    },
-    {
-      "user": 1,
-      "userId": 6,
-      "id": 15
-    },
-    {
-      "user": 1,
-      "userId": 8,
-      "id": 16
-    },
-    {
-      "user": null,
-      "userId": 8,
-      "id": 17
-    },
-    {
-      "user": null,
-      "userId": 1,
-      "id": 18
-    },
-    {
-      "user": 1,
-      "userId": 2,
-      "id": 19
-    },
-    {
-      "user": 1,
-      "userId": 3,
-      "id": 20
-    },
-    {
-      "user": 1,
-      "userId": 4,
-      "id": 21
     }
   ],
   "messages": [
@@ -166,11 +66,6 @@
       "userId": 2,
       "message": "LOL, OK!",
       "id": 2
-    },
-    {
-      "userId": "1",
-      "message": "Test... ME\n!!! YAYYYY!!!!!!!",
-      "id": 3
     },
     {
       "userId": "3",
@@ -188,59 +83,14 @@
       "id": 7
     },
     {
-      "userId": "1",
-      "message": "YAY!",
-      "id": 8
-    },
-    {
-      "userId": "1",
-      "message": "Test",
-      "id": 9
-    },
-    {
-      "userId": "1",
-      "message": "Test",
-      "id": 10
-    },
-    {
-      "userId": "1",
-      "message": "test",
-      "id": 11
-    },
-    {
-      "userId": "1",
-      "message": "YAY",
-      "id": 12
-    },
-    {
-      "userId": "1",
-      "message": "YAY",
-      "id": 13
-    },
-    {
-      "userId": "1",
-      "message": "Test",
-      "id": 14
-    },
-    {
-      "userId": "1",
-      "message": "hello",
-      "id": 15
-    },
-    {
-      "userId": "1",
-      "message": "post",
-      "id": 16
-    },
-    {
-      "userId": "1",
-      "message": "yay",
-      "id": 17
-    },
-    {
       "userId": "2",
       "message": "yo!",
       "id": 18
+    },
+    {
+      "userId": "1",
+      "message": "it works",
+      "id": 19
     }
   ],
   "tasks": [
@@ -299,6 +149,13 @@
       "date_due": "2019-07-10",
       "complete": false,
       "id": 8
+    },
+    {
+      "userId": 1,
+      "task": "FINISH CAPSTONE PRE-PROPOSAL",
+      "date_due": "2019-07-12",
+      "complete": false,
+      "id": 9
     }
   ],
   "events": [
@@ -325,44 +182,37 @@
     },
     {
       "userId": 2,
-      "event_name": "U2 E1",
+      "event_name": "U2 concert",
       "event_date": "2019-08-04",
-      "event_location": "here",
+      "event_location": "Ascend",
       "id": 20
     },
     {
       "userId": 2,
-      "event_name": "U2 E2",
+      "event_name": "Star Wars Movie",
       "event_date": "2019-08-05",
-      "event_location": "here",
+      "event_location": "Movie Theater",
       "id": 21
     },
     {
-      "userId": 2,
-      "event_name": "U2 E3",
-      "event_date": "2019-08-05",
-      "event_location": "here",
-      "id": 22
-    },
-    {
       "userId": 3,
-      "event_name": "U3",
+      "event_name": "Group meet up",
       "event_date": "2019-07-14",
-      "event_location": "somewhere",
+      "event_location": "coffee shop",
       "id": 24
     },
     {
       "userId": 3,
-      "event_name": "U3",
-      "event_date": "2019-07-11",
-      "event_location": "here",
+      "event_name": "Capstone Presentation",
+      "event_date": "2019-08-20",
+      "event_location": "NSS",
       "id": 25
     },
     {
       "userId": 1,
-      "event_name": "blah",
+      "event_name": "Get hair did",
       "event_date": "2019-12-31",
-      "event_location": "blah",
+      "event_location": "Salon",
       "id": 27
     }
   ],
@@ -390,22 +240,6 @@
       "news_synopsis": "Florida man goes on hilarious rant about summer heat",
       "news_time": 1562613858765,
       "id": 5
-    },
-    {
-      "userId": 1,
-      "news_url": "blah",
-      "news_title": "blah",
-      "news_synopsis": "blah",
-      "news_time": 1562693184026,
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "news_url": "jjj",
-      "news_title": "jjj",
-      "news_synopsis": "jjj",
-      "news_time": 1562693309204,
-      "id": 7
     }
   ]
 }

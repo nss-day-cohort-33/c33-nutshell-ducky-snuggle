@@ -20,6 +20,7 @@ import { newsFunc, userId } from "./newsComp.js"
 const RENDER = {
     renderAllComponents: function() {
         navComponent();
+        footComponent();
         newsFunc.newsFromApi(userId);
         eventComponent.loadEventBox();
         friendComponent.loadFriendBox();
@@ -127,6 +128,22 @@ function navComponent() {
     EVENT.loginUserKeyup();
     EVENT.registerPageLink();
   });
+}
+
+//Footer//
+
+function footComponent() {
+    let footer = document.querySelector("#footer-container");
+    let footDiv = document.createElement("div");
+    let footLink = document.createElement("a")
+    footDiv.setAttribute("class", "footer")
+    footLink.setAttribute("class", "footer-link")
+    footDiv.textContent = "Copyright: Team Ducky Snuggles ©";
+    footLink.textContent = "GitHub Repo"
+    footLink.setAttribute("href", "https://https://github.com/nss-day-cohort-33/c33-nutshell-ducky-snuggle.com/gifs/sleepy-duck-msBAKoAHINITC")
+    footLink.setAttribute("target", "_blank")
+    footer.appendChild(footDiv);
+    footer.appendChild(footLink);
 }
 
 export { RENDER };

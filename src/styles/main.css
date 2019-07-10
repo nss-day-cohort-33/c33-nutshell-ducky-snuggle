@@ -1,3 +1,44 @@
+/* Main Container */
+#container {
+    width: 1400px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* login */
+.login {
+    color: white;
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 475px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+}
+
+.login-field {
+    border: none;
+    margin: 20px;
+}
+
+/* #login-header {
+    flex-direction: column;
+    margin: 10px auto;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+} */
+
+#login-field-stuff {
+    font-size: 12px;
+}
+
+
 /*Nav-Bar*/
 #nav-container {
     width: 100%;
@@ -9,6 +50,98 @@
     font-size: 30px;
     font-weight: bold;
     justify-content: space-between;
+    align-items: center
+}
+
+.user-welcome{
+    margin-left: 20px;
+}
+.logout-link {
+    margin-right: 20px;
+}
+
+/* Friend List */
+#friend-event-container {
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    color: white;
+    width: 475px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 6;  
+}
+
+#friend-events-style {
+    background: rgb(248, 248, 248);
+    color:black;
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;  
+}
+
+#friend-container {
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 475px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 5;  
+}
+
+#friend-list-container {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;  
+}
+
+#my-friends-container {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px; 
+}
+
+
+/* Task List */
+#mainTaskCont {
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 475px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 3;
+}
+
+#addFormCont {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;   
+}
+
+#taskListCont {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    height: 300px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: scroll;
+}
+
+.friend-event-header {
+    color:white;
 }
 
 /* Messages */
@@ -19,9 +152,9 @@ body{
 }
 
 
-h1 {
+/* h1 {
     display: block;
-}
+} */
 
 .message {
     display: block;
@@ -62,7 +195,7 @@ h1 {
     padding: 10px;
     margin: 5px;
     width: 475px;
-    height: 250px;
+    height: 350px;
     background: white;
     color: black;
     border-radius: 5px;
@@ -77,6 +210,7 @@ h1 {
     width: 525px;
     background: rgb(63, 143, 189);
     border-radius: 10px;
+    order: 4
 }
 
 #message-input {
@@ -92,12 +226,11 @@ label {
 }
 #event-list-container div:first-of-type {
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 15px; 
     background-color: cornsilk;
 
 
-    /*Other*/
-
+    /*Events*/
 }
 .hide {
     display: none;
@@ -106,7 +239,91 @@ label {
     color: lightgray;
 }
 
-#event-container {
-    border: 1px solid black;
-    width: 525px;
+.addBtn {
+    border-radius: 100%;
+    border: none;
+    font-size: 20px;
+    margin: 15px 5px 5px 400px;
+
 }
+
+#event-container {
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 475px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+}
+
+#event-list-container {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#past-event-div {
+    background: rgb(248, 248, 248);
+    width: 400px; 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* News */
+
+#news-component {
+    border-radius: 10px;
+    background:  rgb(63, 143, 189);
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+}
+#news-id {
+    background: rgb(248, 248, 248);
+    width: 600px;
+    margin: 20px 10px 20px 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#containerId {
+
+    background: rgb(248, 248, 248);
+    width: 600px; 
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#footer-container {
+    color: white;
+    background: rgb(63, 143, 189);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-direction: column;
+}
+.footer {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+    
+.footer-link {
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    }

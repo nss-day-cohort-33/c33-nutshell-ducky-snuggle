@@ -20,12 +20,14 @@ import { newsFunc, userId } from "./newsComp.js"
 const RENDER = {
     renderAllComponents: function() {
         navComponent();
+        footComponent();
         newsFunc.newsFromApi(userId);
         eventComponent.loadEventBox();
         friendComponent.loadFriendBox();
         friendComponent.getFriendEvents();
         targetContainer.appendChild(userMESSAGE.messageComponent());
         EVENT.submitMessage();
+        RENDER.insertMainTaskComponent() 
       },
     insertEventComponent: function(infoArray) {
       for (let i = 0; i < infoArray.length; i++) {
@@ -111,6 +113,8 @@ function navComponent() {
   let userName = sessionStorage.getItem("user_name");
   let usernameNav = document.createElement("div");
   let logoutNav = document.createElement("div");
+  usernameNav.setAttribute("class", "user-welcome");
+  logoutNav.setAttribute("class", "logout-link")
   usernameNav.textContent = `Welcome, ${userName}`;
   logoutNav.textContent = "Logout";
   navBar.appendChild(usernameNav);
@@ -124,6 +128,22 @@ function navComponent() {
     EVENT.loginUserKeyup();
     EVENT.registerPageLink();
   });
+}
+
+//Footer//
+
+function footComponent() {
+    let footer = document.querySelector("#footer-container");
+    let footDiv = document.createElement("div");
+    let footLink = document.createElement("a")
+    footDiv.setAttribute("class", "footer")
+    footLink.setAttribute("class", "footer-link")
+    footDiv.textContent = "Copyright: Team Ducky Snuggles ©";
+    footLink.textContent = "GitHub Repo"
+    footLink.setAttribute("href", "https://https://github.com/nss-day-cohort-33/c33-nutshell-ducky-snuggle.com/gifs/sleepy-duck-msBAKoAHINITC")
+    footLink.setAttribute("target", "_blank")
+    footer.appendChild(footDiv);
+    footer.appendChild(footLink);
 }
 
 export { RENDER };

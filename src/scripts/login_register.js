@@ -19,17 +19,21 @@ return `
 //Builds intial Login Screen//
 function loginUserForm () {
 return `
-<h1>Welcome, Snuggle Ducks, to Nutshell</h1>
-<fieldset>
-<div>
+<div class="login">
+<h1 id="login-header"><strong class="strong">Welcome, Snuggle Ducks, to Nutshell</strong></h1>
+<fieldset class="login-field">
+<div id="login-field-stuff">
     <label for="login">Login:</label>
     <input id="login" type="text" placeholder="Your Username">
+    <br><br>
     <label for="password">Password:</label>
     <input id="password" type="password" placeholder="Your Password">
+    <br><br>
     <button id="login-btn">Login</button>
     <div class="register-link"><a id="register-link" href="">Register</a></div>
 </div>
 </fieldset>
+</div>
 `
 }
 

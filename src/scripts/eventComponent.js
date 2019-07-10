@@ -19,6 +19,7 @@ eventContainer.appendChild(pastEventDiv);
 // showBtn.textContent = "Show my events"
 const addBtn = document.createElement("button")
 addBtn.textContent = "+"
+addBtn.setAttribute("class", "addBtn")
 
 const eventComponent = {
     createDynamicHeading: function () {

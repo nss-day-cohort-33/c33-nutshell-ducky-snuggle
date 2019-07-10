@@ -12,6 +12,7 @@ masterNewsDiv.setAttribute("id", "news-component")
 let newsFunc = {
     // //function to generate new divs to the dom
     newsCreateComponent: function () {
+        let newsField = document.createElement("fieldset")
         let newsDiv = document.createElement("div")
         let newsLabelTitle = document.createElement("label")
         let newsInputTitle = document.createElement("input")
@@ -21,22 +22,22 @@ let newsFunc = {
         let newsInputUrl = document.createElement("input")
         let newsSaveBtn = document.createElement("button")
 
-        newsDiv.setAttribute("id", "news-id")
+        newsField.setAttribute("id", "news-id")
 
         newsLabelTitle.setAttribute("for", "news-title")
-        newsLabelTitle.textContent = "News Title:"
+        newsLabelTitle.textContent = "News Title: "
         newsInputTitle.setAttribute("id", "news-title")
         newsInputTitle.setAttribute("type", "text")
         newsInputTitle.setAttribute("placeholder", "ex: World Hunger Solved")
 
         newsLabelSynopsis.setAttribute("for", "news-synopsis")
-        newsLabelSynopsis.textContent = "News Synopsis:"
+        newsLabelSynopsis.textContent = "News Synopsis: "
         newsInputSynopsis.setAttribute("id", "news-synopsis")
         newsInputSynopsis.setAttribute("type", "text")
         newsInputSynopsis.setAttribute("placeholder", "ex:")
 
         newsLabelUrl.setAttribute("for", "news-url")
-        newsLabelUrl.textContent = "News Url:"
+        newsLabelUrl.textContent = "News Url: "
         newsInputUrl.setAttribute("id", "news-url")
         newsInputUrl.setAttribute("type", "url")
         newsInputUrl.setAttribute("name", "news-addresss")
@@ -48,16 +49,20 @@ let newsFunc = {
         newsDiv.innerHTML = "<h1>News Articles<h1>"
         newsDiv.appendChild(newsLabelTitle)
         newsDiv.appendChild(newsInputTitle)
+        newsDiv.appendChild(document.createElement("br"))
 
         newsDiv.appendChild(newsLabelSynopsis)
         newsDiv.appendChild(newsInputSynopsis)
+        newsDiv.appendChild(document.createElement("br"))
 
         newsDiv.appendChild(newsLabelUrl)
         newsDiv.appendChild(newsInputUrl)
+        newsDiv.appendChild(document.createElement("br"))
 
         newsDiv.appendChild(newsSaveBtn)
+        newsField.appendChild(newsDiv)
 
-        return newsDiv
+        return newsField
     },
     //this function generate new divs to the dom to target the edit/delete button and holds the edit/delete button
     newToDomComp: function (info) {
